@@ -1,0 +1,154 @@
+---
+layout: base
+title: Publications
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Publications</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 28px;
+    }
+    .search-sort {
+      margin: 20px 0;
+    }
+    input[type="text"] {
+      padding: 8px;
+      width: 300px;
+      margin-right: 10px;
+    }
+    select {
+      padding: 8px;
+    }
+    .publication {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+    .title {
+      font-weight: bold;
+    }
+    .bibtex {
+      font-family: monospace;
+      background: #f8f8f8;
+      padding: 10px;
+      display: none;
+      margin-top: 10px;
+    }
+    .toggle {
+      color: #0077cc;
+      cursor: pointer;
+      font-size: 14px;
+      display: inline-block;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Publications</h1>
+
+<div class="search-sort">
+  <input type="text" id="searchInput" placeholder="Search by title or author...">
+  <select id="sortSelect">
+    <option value="">Sort by...</option>
+    <option value="year-desc">Year (Newest First)</option>
+    <option value="year-asc">Year (Oldest First)</option>
+    <option value="author">Author Name</option>
+  </select>
+</div>
+
+<div id="pubList">
+  <!-- This section will be populated by JavaScript -->
+</div>
+
+<script>
+  const publications = [
+    {
+      title: "Formal Verification of Reinforcement Learning for Mobile Robots",
+      author: "Hassan Mahboobfarimani, Pavithra Prabhakar",
+      year: 2024,
+      bibtex: `@article{hassan2024verification,
+  title={Formal Verification of Reinforcement Learning for Mobile Robots},
+  author={Mahboobfarimani, Hassan and Prabhakar, Pavithra},
+  journal={Journal of Robotics and Automation},
+  year={2024}
+}`
+    },
+    {
+      title: "A Safe Approach to Multi-Agent Planning",
+      author: "Alice Johnson, Mark Lee",
+      year: 2023,
+      bibtex: `@inproceedings{johnson2023safe,
+  title={A Safe Approach to Multi-Agent Planning},
+  author={Johnson, Alice and Lee, Mark},
+  booktitle={Proceedings of ICRA},
+  year={2023}
+}`
+    }
+    // Add more publications here...
+  ];
+
+  function renderPublications(list) {
+    const pubList = document.getElementById('pubList');
+    pubList.innerHTML = '';
+    list.forEach((pub, idx) => {
+      const div = document.createElement('div');
+      div.className = 'publication';
+      div.innerHTML = `
+        <div class="title">${pub.title}</div>
+        <div class="meta"><strong>Author(s):</strong> ${pub.author} | <strong>Year:</strong> ${pub.year}</div>
+        <div class="toggle" onclick="toggleBibtex(${idx})">[Show BibTeX]</div>
+        <div class="bibtex" id="bib-${idx}">${pub.bibtex.replace(/\n/g, "<br>")}</div>
+      `;
+      pubList.appendChild(div);
+    });
+  }
+
+  function toggleBibtex(index) {
+    const bib = document.getElementById(`bib-${index}`);
+    if (bib.style.display === 'block') {
+      bib.style.display = 'none';
+    } else {
+      bib.style.display = 'block';
+    }
+  }
+
+  function sortPublications(option) {
+    let sorted = [...publications];
+    if (option === 'year-desc') sorted.sort((a, b) => b.year - a.year);
+    else if (option === 'year-asc') sorted.sort((a, b) => a.year - b.year);
+    else if (option === 'author') sorted.sort((a, b) => a.author.localeCompare(b.author));
+    renderPublications(sorted);
+  }
+
+  function filterPublications(query) {
+    const filtered = publications.filter(pub =>
+      pub.title.toLowerCase().includes(query.toLowerCase()) ||
+      pub.author.toLowerCase().includes(query.toLowerCase())
+    );
+    renderPublications(filtered);
+  }
+
+  document.getElementById('searchInput').addEventListener('input', e => {
+    filterPublications(e.target.value);
+  });
+
+  document.getElementById('sortSelect').addEventListener('change', e => {
+    sortPublications(e.target.value);
+  });
+
+  // Initial render
+  renderPublications(publications);
+</script>
+
+</body>
+</html>
