@@ -1,0 +1,34 @@
+{
+  "name": "trait-lab-website",
+  "version": "1.0.0",
+  "description": "This web site belong to the Trait Lab at Kansas State University.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/11ty"
+  },
+  "bugs": {
+    "url": "https://gitlab.cs.ksu.edu/research/traits_website/issues"
+  },
+  "homepage": "https://gitlab.cs.ksu.edu/research/traits_website#readme",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve --quiet",
+    "debug": "cross-env DEBUG=Eleventy* npx @11ty/eleventy",
+    "debugstart": "cross-env DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
+    "benchmark": "cross-env DEBUG=Eleventy:Benchmark* npx @11ty/eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.cs.ksu.edu/research/traits_website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  }
+}

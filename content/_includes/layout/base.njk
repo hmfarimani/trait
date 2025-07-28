@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="{{ metadata.language }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="{{ description or metadata.description }}"
+    />
+    <title>{{ title or metadata.title }}</title>
+    <meta
+      name="keywords"
+      content="Trustworthy AI, Autonomy Lab, TRAIT, Kansas State University, K-State, robotics, explainable AI, XAI, secure AI, reliable AI, ethical AI, AI safety, formal methods, CSP, Communicating Sequential Processes, AI verification, AI validation, autonomous systems, artificial intelligence research, AI ethics, AI security, AI dependability"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    {% block head %} {# Additional head content can be added here #} {% endblock
+    %}
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="no-sidebar is-preload">
+    <div id="page-wrapper">
+      <!-- Header -->
+      <div id="header">
+        <!-- Inner -->
+        <div class="inner">
+          <header>
+            <h1>
+              <a href="index.html" id="logo"
+                >Trustworthy AI and Cyber-Physical Lab</a
+              >
+            </h1>
+          </header>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+          <ul>
+            <li><a href="index">Home</a></li>
+            <li><a href="team">Team</a></li>
+            <li><a href="publications">Publications</a></li>
+            <li><a href="projects">Projects</a></li>
+            <li><a href="news">News</a></li>
+          </ul>
+        </nav>
+      </div>
+      {% block homeBanner %} {# Default content for pages that don't override
+      this block directly #} {% endblock %}
+      <!-- Main -->
+      <div class="wrapper style1">
+        <div class="container">{{ content | safe }}</div>
+      </div>
+
+      <!-- Footer -->
+      <div id="footer">
+        <div class="container">
+          <div class="row">
+            <!-- Tweets -->
+            <section class="col-4 col-12-mobile">
+              <header>
+                <h2 class="icon solid fa-address-book circled">
+                  <span class="label">Contact Info</span>
+                </h2>
+
+                <h3>
+                  <span class="label">Contact Info</span>
+                </h3>
+              </header>
+              <ul class="divided">
+                <li>
+                  <article class="tweet">
+                    Trustworthy AI and Cyber-Physical Lab | <br />
+                    Department of Computer Science | <br />
+                    2184 Engineering Hall | <br />
+                    1701D Platt St., Manhattan, KS 66506
+                  </article>
+                </li>
+              </ul>
+            </section>
+
+            <!-- Posts -->
+            <section class="col-4 col-12-mobile">
+              <header>
+                <h2 class="icon solid fa-hashtag circled">
+                  <span class="label">Posts</span>
+                </h2>
+                <h3>
+                  <span class="label">Follow Us at Social Media</span>
+                </h3>
+              </header>
+              <ul class="divided">
+                <li>
+                  <article class="post stub">
+                    <header>
+                      <h3 class="icon brands fa-twitter"></h3>
+                    </header>
+                  </article>
+                </li>
+              </ul>
+            </section>
+
+            <!-- Photos -->
+            <section class="col-4 col-12-mobile">
+              <header>
+                <h2 class="icon solid fa-camera circled">
+                  <span class="label">Photos</span>
+                </h2>
+              </header>
+              <div class="row gtr-25">
+                <div class="col-6">
+                  <a href="#" class="image fit"
+                    ><img src="images/pic10.jpg" alt=""
+                  /></a>
+                </div>
+                <div class="col-6">
+                  <a href="#" class="image fit"
+                    ><img src="images/pic11.jpg" alt=""
+                  /></a>
+                </div>
+              </div>
+            </section>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-12">
+              <!-- Contact -->
+
+              <!-- Copyright -->
+              <div class="copyright">
+                <ul class="menu">
+                  <li>&copy; Untitled. All rights reserved.</li>
+                  <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
