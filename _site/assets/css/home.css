@@ -52,3 +52,51 @@
 .news-link:hover {
   text-decoration: underline;
 }
+
+#banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#banner p {
+  margin: auto;
+  margin-top: 1.5em;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  text-align: justify;
+}
+.tweet {
+  text-align: center;
+  line-height: 1.5;
+}
+
+.sponsors {
+  background-color: #f9f9f9;
+  padding: 1rem 1rem;
+  text-align: center;
+}
+
+.sponsors-title {
+  margin-bottom: 2rem;
+}
+
+.sponsor-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.sponsor-item img {
+  max-height: 160px;
+  max-width: 160px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.sponsor-item img:hover {
+  filter: none;
+  transform: scale(1.05);
+}

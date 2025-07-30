@@ -1,84 +1,122 @@
 ---
 layout: layout/base.njk
-title: "Team"
-description: "Meet the team behind the Trustworthy AI and Cyber-Physical Lab at Kansas State
-University. Our lab is dedicated to advancing research in robotics, AI safety, and formal methods."
+title: "Team - TRAIT"
 metadata:
-  title: "Team - Trustworthy AI and Cyber-Physical Lab"
   description: "Meet the team behind the Trustworthy AI and Cyber-Physical Lab at Kansas State University."
   keywords: "Trustworthy AI, Autonomy Lab, TRAIT, Kansas State University, K-State, robotics, explainable AI, XAI, secure AI, reliable AI, ethical AI, AI safety, formal methods, CSP, Communicating Sequential Processes, AI verification, AI validation, autonomous systems, artificial intelligence research, AI ethics, AI security, AI dependability"
-
 ---
+
+{% block head %}
+<style>
+  .student {
+    display: flex;
+    align-items: flex-start;
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+  }
+  .student img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 8px;
+  }
+  .info {
+    flex: 1;
+  }
+  .name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .position {
+    color: #555;
+  }
+  .summary {
+    margin: 10px 0;
+  }
+  .contact a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  .alumni-list {
+    margin-top: 20px;
+  }
+  .alumni-item {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  .alumni-name {
+    font-weight: bold;
+  }
+  .alumni-date {
+    color: #666;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+</style>
+{% endblock %}
 
 <article id="main" class="special">
   <header>
-    <h2><a href="#">Lab Members</a></h2>
-    <p>People who colaborate with us.</p>
+    <h2 class="second-title">Lab Members</h2>
+    <p>Current Lab Members</p>
   </header>
 
   <section>
-    <header>
-      <h3>Leadership</h3>
-    </header>
     <div class="student">
-      <img src="images/people/hmfarimani.JPG" alt="Leader" />
+      <img src="/images/people/pprobhakar.JPG" alt="Leader" />
       <div class="info">
-        <div class="name">Dr. Alice Johnson</div>
-        <div class="position">Lab Director</div>
+        <div class="name">Professor Pavithra Prabhakar</div>
+        <div class="position">Principal Investor</div>
         <div class="summary">
-          Leading the lab's vision in robotics and AI safety research.
+          Leader in Trustworthy AI and Autonomous Systems, Peggy and Gary
+          Edwards Chair in Engineering and Professor at Kansas State University
         </div>
         <div class="contact">
-          Email: alice@example.com |
-          <a href="https://alicepage.com" target="_blank">Personal Page</a>
+          Email: pprabhakar@ksu.edu |
+          <a href="#" target="_blank">Personal Page</a>
         </div>
       </div>
     </div>
-  </section>
-
-  <section>
-    <header>
-      <h3>Graduate Students</h3>
-    </header>
     <div class="student">
-      <img src="images/people/hmfarimani.JPG" alt="Grad Student" />
+      <img src="/images/people/hmfarimani.JPG" alt="Grad Student" />
       <div class="info">
-        <div class="name">John Doe</div>
-        <div class="position">Master's Student</div>
-        <div class="summary">
-          Working on optimization algorithms for multi-agent navigation.
-        </div>
+        <div class="name">Lispy Gupta</div>
+        <div class="position">Research Assistant Professor</div>
+        <div class="summary">Working ....</div>
         <div class="contact">
           Email: john@example.com |
-          <a href="https://johnportfolio.com" target="_blank">Portfolio</a>
+          <a href="#" target="_blank">Portfolio</a>
         </div>
       </div>
     </div>
     <div class="student">
-      <img src="images/people/hmfarimani.JPG" alt="Grad Student" />
+      <img src="/images/people/hmfarimani.JPG" alt="Grad Student" />
       <div class="info">
-        <div class="name">John Doe</div>
-        <div class="position">Master's Student</div>
-        <div class="summary">
-          Working on optimization algorithms for multi-agent navigation.
-        </div>
+        <div class="name">Habeeb P</div>
+        <div class="position">Postdoctoral Fellow</div>
+        <div class="summary">Working ...</div>
         <div class="contact">
           Email: john@example.com |
-          <a href="https://johnportfolio.com" target="_blank">Portfolio</a>
+          <a href="#" target="_blank">Portfolio</a>
         </div>
       </div>
     </div>
-  </section>
-  <section>
-    <header>
-      <h3>Graduate Students</h3>
-    </header>
     <div class="student">
-      <img src="images/people/hmfarimani.JPG" alt="Grad Student" />
+      <img src="/images/people/hmfarimani.JPG" alt="Grad Student" />
       <div class="info">
         <div class="name">Hassan M.Farimani</div>
         <div class="position">Phd Student</div>
-        <div class="summary">RL, Formal verification , so on</div>
+        <div class="summary">
+          Dedicated and results-oriented PhD student at Kansas State University
+          with a strong background in AI and software development. Passionate
+          about contributing to advancements in formal verification, RL,
+          trustworthy AI, and robotics. Eager to apply research expertise and
+          technical skills in a Teaching or Research Assistant role.
+        </div>
         <div class="contact">
           Email: hmfarimani@ksu.edu |
           <a href="https://hmfarimani.github.io/" target="_blank">Portfolio</a>
@@ -90,21 +128,84 @@ metadata:
 <hr />
 <div class="row">
   <header>
-    <h2><a href="#">Alumni</a></h2>
-    <p>People who colaborate with us.</p>
+    <h2><a href="#">Lab Alumni</a></h2>
   </header>
+
   <div class="alumni-list">
     <div class="alumni-item">
-      <span class="alumni-name">Sara Williams</span>
-      <span class="alumni-date">Graduated: May 2023</span>
+      <span class="alumni-name">Ratan Lal </span>
+      <span class="alumni-date"
+        >PhD 2021, currently Assistant Professor at Northwest Missouri State
+        University</span
+      >
     </div>
     <div class="alumni-item">
-      <span class="alumni-name">Mark Lee</span>
-      <span class="alumni-date">Graduated: December 2022</span>
+      <span class="alumni-name">Zahra Rahimi Afzal</span>
+      <span class="alumni-date">Grad Student, 2020</span>
     </div>
     <div class="alumni-item">
-      <span class="alumni-name">Emily Zhang</span>
-      <span class="alumni-date">Graduated: May 2021</span>
+      <span class="alumni-name">Galib Mallik</span>
+      <span class="alumni-date">Postdoc, 2017</span>
+    </div>
+    <div class="alumni-item">
+      <span class="alumni-name">Soudabeh Taghian Dinan</span>
+      <span class="alumni-date">Grad Student, 2017</span>
+    </div>
+    <div class="alumni-item">
+      <span class="alumni-name">Yuanting Chen</span>
+      <span class="alumni-date">Grad Student, 2017</span>
+    </div>
+    <div class="alumni-item">
+      <span class="alumni-name">Eric Honas</span>
+      <span class="alumni-date">Undergrad, 2017</span>
+    </div>
+    <div class="alumni-item">
+      <span class="alumni-name">Zach Terrell</span>
+      <span class="alumni-date">Undergrad, 2017</span>
+    </div>
+    <div class="alumni-item">
+      <span class="alumni-name">Reece Berens</span>
+      <span class="alumni-date">Undergrad, 2017</span>
+    </div>
+    <div class="alumni-item">
+      <span class="alumni-name">Jarod Honas</span>
+      <span class="alumni-date">Undergrad, 2017</span>
+    </div>
+    <div class="alumni-item">
+      <span class="alumni-name">Nathan McClain</span>
+      <span class="alumni-date">Undergrad , 2017</span>
+    </div>
+    <div class="alumni-item">
+      <span class="alumni-name">Brianna Priddle</span>
+      <span class="alumni-date">Undergrad, 2016</span>
+    </div>
+    <div class="alumni-item">
+      <span class="alumni-name">Jake Ehrlich</span>
+      <span class="alumni-date">Undergrad, 2016</span>
+    </div>
+    <div class="alumni-item">
+      <span class="alumni-name">Yoke Peng Leong</span>
+      <span class="alumni-date"
+        >Intern at IMDEA, Summer 2014 - PhD student at Caltech, 2014</span
+      >
+    </div>
+    <div class="alumni-item">
+      <span class="alumni-name">Scott Livingston</span>
+      <span class="alumni-date"
+        >Intern at IMDEA, Summer 2013 - PhD student at Caltech</span
+      >
+    </div>
+    <div class="alumni-item">
+      <span class="alumni-name">Alex Jose</span>
+      <span class="alumni-date"
+        >Intern at Caltech, Summer 2012 - Undergrad at Caltech</span
+      >
+    </div>
+    <div class="alumni-item">
+      <span class="alumni-name">Nick Spooner</span>
+      <span class="alumni-date"
+        >Intern at Caltech, Summer 2012 - Undergrad at Oxford</span
+      >
     </div>
   </div>
 </div>

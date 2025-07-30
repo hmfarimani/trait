@@ -18,21 +18,21 @@
     <title>{{ title or metadata.title }}</title>
     <meta
       name="keywords"
-      content="Trustworthy AI, Autonomy Lab, TRAIT, Kansas State University, K-State, robotics, explainable AI, XAI, secure AI, reliable AI, ethical AI, AI safety, formal methods, CSP, Communicating Sequential Processes, AI verification, AI validation, autonomous systems, artificial intelligence research, AI ethics, AI security, AI dependability"
+      content="{{ keywords or metadata.keywords }}"
     />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
     {% block head %} {# Additional head content can be added here #} {% endblock
     %}
     <noscript
-      ><link rel="stylesheet" href="assets/css/noscript.css"
+      ><link rel="stylesheet" href="/assets/css/noscript.css"
     /></noscript>
   </head>
-  <body class="no-sidebar is-preload">
+  <body class="{% if page.url == '/' %}homepage{% endif %} no-sidebar is-preload">
     <div id="page-wrapper">
       <!-- Header -->
       <div id="header">
@@ -44,6 +44,7 @@
                 >Trustworthy AI and Cyber-Physical Lab</a
               >
             </h1>
+            {% block extraHeader %} {# Additional head content can be added here #} {% endblock %}
           </header>
         </div>
 
@@ -82,10 +83,10 @@
               </header>
               <ul class="divided">
                 <li>
-                  <article class="tweet">
-                    Trustworthy AI and Cyber-Physical Lab | <br />
-                    Department of Computer Science | <br />
-                    2184 Engineering Hall | <br />
+                  <article class="tweet" >
+                    Trustworthy AI and Cyber-Physical Lab <br />
+                    Department of Computer Science <br />
+                    2224 Engineering Hall <br />
                     1701D Platt St., Manhattan, KS 66506
                   </article>
                 </li>
@@ -123,12 +124,12 @@
               <div class="row gtr-25">
                 <div class="col-6">
                   <a href="#" class="image fit"
-                    ><img src="images/pic10.jpg" alt=""
+                    ><img src="/images/pic10.jpg" alt=""
                   /></a>
                 </div>
                 <div class="col-6">
                   <a href="#" class="image fit"
-                    ><img src="images/pic11.jpg" alt=""
+                    ><img src="/images/pic11.jpg" alt=""
                   /></a>
                 </div>
               </div>
@@ -153,13 +154,13 @@
     </div>
 
     <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.dropotron.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/jquery.scrollex.min.js"></script>
+    <script src="/assets/js/browser.min.js"></script>
+    <script src="/assets/js/breakpoints.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/main.js"></script>
   </body>
 </html>
