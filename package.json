@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This web site belong to the Trait Lab at Kansas State University.",
   "main": "index.js",
+  "type": "module",
   "engines": {
     "node": ">=18"
   },
@@ -30,5 +31,9 @@
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2"
+  },
+  "dependencies": {
+    "@11ty/eleventy-img": "^6.0.4",
+    "@11ty/eleventy-navigation": "^1.0.4"
   }
 }

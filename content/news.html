@@ -1,0 +1,142 @@
+---
+layout: layout/base.njk
+title: News - TRAIT
+eleventyNavigation:
+  key: "News"
+  order: 3
+metadata:
+  description: "Our News in Trustworthy AI and Cyber-Physical Lab at Kansas State University."
+  keywords: "Trustworthy AI, Autonomy Lab, TRAIT, Kansas State University, K-State, robotics, explainable AI, XAI, secure AI, reliable AI, ethical AI, AI safety, formal methods, CSP, Communicating Sequential Processes, AI verification, AI validation, autonomous systems, artificial intelligence research, AI ethics, AI security, AI dependability"
+---
+
+{% block head %}
+<style>
+  .news-list {
+    display: grid;
+    gap: 2rem; /* Space between the news items */
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  /* Individual news item card */
+  .news-item {
+    display: flex;
+    flex-direction: row; /* Default: image on left, text on right */
+    gap: 0.1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden; /* Important for keeping child border-radius contained */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Image container */
+  .news-item-image {
+    flex-shrink: 0;
+    width: 250px; /* Adjust width as needed */
+    height: auto;
+  }
+
+  .news-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents image from being stretched or skewed */
+    display: block;
+  }
+
+  /* Text content container */
+  .news-item-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Date styling */
+  .news-item-date {
+    font-family: "Inter", sans-serif; /* A nice, clean sans-serif font */
+    font-size: 0.875rem;
+    color: #6c757d; /* Muted gray */
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  /* Title styling */
+  .news-item-title {
+    margin: 0 0 0.15rem 0;
+    line-height: 1.2;
+  }
+
+  .news-item-title a {
+    text-decoration: none;
+    color: #212529; /* Dark, readable text */
+    transition: color 0.2s ease;
+  }
+
+  .news-item-title a:hover {
+    color: #0056b3; /* A nice blue for hover */
+  }
+
+  /* Excerpt styling */
+  .news-item-excerpt {
+    line-height: 1.6;
+    margin: 0 0 1rem 0;
+    flex-grow: 1; /* Pushes the 'Read More' link to the bottom */
+  }
+
+  /* "Read More" link styling */
+  .news-item-readmore {
+    text-decoration: none;
+    color: #0056b3;
+    transition: transform 0.2s ease;
+    display: inline-block;
+  }
+
+  .news-item-readmore:hover {
+    transform: translateX(4px);
+    text-decoration: underline;
+  }
+
+  /*
+ * Responsive adjustments for mobile devices
+ */
+  @media (max-width: 768px) {
+    .news-item {
+      flex-direction: column; /* Stack image on top of text */
+    }
+
+    .news-item-image {
+      width: 100%;
+      height: 200px; /* Give a fixed height for consistency */
+    }
+
+    .news-item-content {
+      padding: 1rem 1.5rem 1.5rem; /* Adjust padding for mobile */
+    }
+
+    .news-item-title {
+      font-size: 1.5rem; /* Slightly smaller title on mobile */
+    }
+  }
+</style>
+{% endblock %}
+
+<article id="main" class="special">
+  <header>
+    <h2 class="second-title">Lab News</h2>
+    <p>Here you can find all our latest news and updates.</p>
+  </header>
+
+  <section></section>
+</article>
+<div class="news-list">
+  {% set postslist = collections.news %} {% include "newslist.njk" %} {% if
+  postslist | length == 0 %}
+  <p>No news posts available at the moment.</p>
+  {% endif %}
+</div>

@@ -1,852 +1,121 @@
 ---
 layout: layout/base.njk
-title: "Publications - TRAIT"
+title: Publications - TRAIT
+eleventyNavigation:
+  key: "Publications"
+  order: 4
 metadata:
-  description: "Our publications. Trustworthy AI and Cyber-Physical Lab at Kansas State University."
+  description: "Our publications in Trustworthy AI and Cyber-Physical Lab at Kansas State University."
   keywords: "Trustworthy AI, Autonomy Lab, TRAIT, Kansas State University, K-State, robotics, explainable AI, XAI, secure AI, reliable AI, ethical AI, AI safety, formal methods, CSP, Communicating Sequential Processes, AI verification, AI validation, autonomous systems, artificial intelligence research, AI ethics, AI security, AI dependability"
 ---
 
+{% block head %}
+<style>
+  /* Basic styling for readability */
+  .controls {
+    background: #fff;
+    padding: 20px 25px;
+    margin-bottom: 2em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .controls label {
+    font-weight: 500;
+  }
+  .controls input[type="text"],
+  .controls select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    flex-grow: 1;
+  }
+  .publication-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  .publication-item {
+    background: #fff;
+    margin-bottom: 1.5em;
+    padding: 20px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  .publication-item:hover {
+    transform: translateY(-5px);
+  }
+  .publication-title a {
+    text-decoration: none;
+    color: #0056b3;
+    font-weight: 600;
+    font-size: 1.1em;
+  }
+  .publication-title a:hover {
+    text-decoration: underline;
+  }
+  .publication-authors {
+    font-size: 0.95em;
+    color: #555;
+    margin-top: 5px;
+  }
+  .publication-venue {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px;
+  }
+  .publication-year {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px;
+  }
+</style>
+{% endblock %}
+
 <article id="main" class="special">
   <header>
-    <h2 class="second-title">Publications</h2>
-    <p>Our pulications by year</p>
+    <h2 class="second-title">Our Publications</h2>
   </header>
 
-  <section>
-    <div class="search-sort">
+  <section style="padding-top: 10px">
+    <div class="controls">
+      <label for="searchInput">Search:</label>
       <input
         type="text"
         id="searchInput"
-        placeholder="Search by title or author..."
+        placeholder="Search by title, author, or year"
       />
+
+      <label for="sortSelect" style="margin-left: 10px">Sort by:</label>
       <select id="sortSelect">
-        <option value="">Sort by...</option>
         <option value="year-desc">Year (Newest First)</option>
         <option value="year-asc">Year (Oldest First)</option>
-        <option value="author">Author Name</option>
+        <option value="author">Author (A-Z)</option>
       </select>
     </div>
 
-    <div id="pubList">
-      <!-- Populated by JS -->
-    </div>
+    <ul id="pubList" class="publication-list"></ul>
   </section>
 </article>
-
 <script>
-  const publications = [
-    {
-      title:
-        "Approximate Conformance Checking for Closed-Loop Systems With Neural\n                  Network Controllers",
-      author: "Habeeb P, Lipsy Gupta, Pavithra Prabhakar",
-      year: 2024,
-      bibtex:
-        "@article{DBLP:journals/tcad/PGP24,\n  author       = {Habeeb P and\n                  Lipsy Gupta and\n                  Pavithra Prabhakar},\n  title        = {Approximate Conformance Checking for Closed-Loop Systems With Neural\n                  Network Controllers},\n  journal      = {{IEEE} Trans. Comput. Aided Des. Integr. Circuits Syst.},\n  volume       = {43},\n  number       = {11},\n  pages        = {4322--4333},\n  year         = {2024},\n  url          = {https://doi.org/10.1109/TCAD.2024.3445813},\n  doi          = {10.1109/TCAD.2024.3445813},\n  timestamp    = {Sat, 30 Nov 2024 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/journals/tcad/PGP24.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Safety Verification of Closed-loop Control System with Anytime Perception",
-      author: "Lipsy Gupta, Jahid Chowdhury Choton, Pavithra Prabhakar",
-      year: 2024,
-      bibtex:
-        "@inproceedings{DBLP:conf/icra/GuptaCP24,\n  author       = {Lipsy Gupta and\n                  Jahid Chowdhury Choton and\n                  Pavithra Prabhakar},\n  title        = {Safety Verification of Closed-loop Control System with Anytime Perception},\n  booktitle    = {{IEEE} International Conference on Robotics and Automation, {ICRA}\n                  2024, Yokohama, Japan, May 13-17, 2024},\n  pages        = {227--233},\n  publisher    = {{IEEE}},\n  year         = {2024},\n  url          = {https://doi.org/10.1109/ICRA57147.2024.10611044},\n  doi          = {10.1109/ICRA57147.2024.10611044},\n  timestamp    = {Mon, 19 Aug 2024 15:58:53 +0200},\n  biburl       = {https://dblp.org/rec/conf/icra/GuptaCP24.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Interval Image Abstraction for Verification of Camera-Based Autonomous\n                  Systems",
-      author: "Habeeb P, Deepak D'Souza, Kamal Lodaya, Pavithra Prabhakar",
-      year: 2024,
-      bibtex:
-        "@article{DBLP:journals/tcad/PDLP24,\n  author       = {Habeeb P and\n                  Deepak D'Souza and\n                  Kamal Lodaya and\n                  Pavithra Prabhakar},\n  title        = {Interval Image Abstraction for Verification of Camera-Based Autonomous\n                  Systems},\n  journal      = {{IEEE} Trans. Comput. Aided Des. Integr. Circuits Syst.},\n  volume       = {43},\n  number       = {11},\n  pages        = {4310--4321},\n  year         = {2024},\n  url          = {https://doi.org/10.1109/TCAD.2024.3448306},\n  doi          = {10.1109/TCAD.2024.3448306},\n  timestamp    = {Sat, 30 Nov 2024 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/journals/tcad/PDLP24.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Approximate Conformance Checking for Closed-Loop Systems With Neural\n                  Network Controllers",
-      author: "Habeeb P, Lipsy Gupta, Pavithra Prabhakar",
-      year: 2024,
-      bibtex:
-        "@article{DBLP:journals/tcad/PGP24,\n  author       = {Habeeb P and\n                  Lipsy Gupta and\n                  Pavithra Prabhakar},\n  title        = {Approximate Conformance Checking for Closed-Loop Systems With Neural\n                  Network Controllers},\n  journal      = {{IEEE} Trans. Comput. Aided Des. Integr. Circuits Syst.},\n  volume       = {43},\n  number       = {11},\n  pages        = {4322--4333},\n  year         = {2024},\n  url          = {https://doi.org/10.1109/TCAD.2024.3445813},\n  doi          = {10.1109/TCAD.2024.3445813},\n  timestamp    = {Sat, 30 Nov 2024 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/journals/tcad/PGP24.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Formal Verification Techniques for Vision-Based Autonomous Systems\n                  - {A} Survey",
-      author:
-        "Sayan Mitra, Corina S. Pasareanu, Pavithra Prabhakar, Sanjit A. Seshia, Ravi Mangal, Yangge Li, Christopher Watson, Divya Gopinath, Huafeng Yu",
-      year: 2024,
-      bibtex:
-        '@inproceedings{DBLP:conf/birthday/MitraPPSMLWGY25,\n  author       = {Sayan Mitra and\n                  Corina S. Pasareanu and\n                  Pavithra Prabhakar and\n                  Sanjit A. Seshia and\n                  Ravi Mangal and\n                  Yangge Li and\n                  Christopher Watson and\n                  Divya Gopinath and\n                  Huafeng Yu},\n  editor       = {Nils Jansen and\n                  Sebastian Junges and\n                  Benjamin Lucien Kaminski and\n                  Christoph Matheja and\n                  Thomas Noll and\n                  Tim Quatmann and\n                  Mari{\\"{e}}lle Stoelinga and\n                  Matthias Volk},\n  title        = {Formal Verification Techniques for Vision-Based Autonomous Systems\n                  - {A} Survey},\n  booktitle    = {Principles of Verification: Cycling the Probabilistic Landscape -\n                  Essays Dedicated to Joost-Pieter Katoen on the Occasion of His 60th\n                  Birthday, Part {III}},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {15262},\n  pages        = {89--108},\n  publisher    = {Springer},\n  year         = {2024},\n  url          = {https://doi.org/10.1007/978-3-031-75778-5\\_5},\n  doi          = {10.1007/978-3-031-75778-5\\_5},\n  timestamp    = {Mon, 27 Jan 2025 14:36:13 +0100},\n  biburl       = {https://dblp.org/rec/conf/birthday/MitraPPSMLWGY25.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}',
-    },
-    {
-      title:
-        "Safety Verification of Closed-loop Control System with Anytime Perception",
-      author: "Lipsy Gupta, Jahid Chowdhury Choton, Pavithra Prabhakar",
-      year: 2024,
-      bibtex:
-        "@inproceedings{DBLP:conf/icra/GuptaCP24,\n  author       = {Lipsy Gupta and\n                  Jahid Chowdhury Choton and\n                  Pavithra Prabhakar},\n  title        = {Safety Verification of Closed-loop Control System with Anytime Perception},\n  booktitle    = {{IEEE} International Conference on Robotics and Automation, {ICRA}\n                  2024, Yokohama, Japan, May 13-17, 2024},\n  pages        = {227--233},\n  publisher    = {{IEEE}},\n  year         = {2024},\n  url          = {https://doi.org/10.1109/ICRA57147.2024.10611044},\n  doi          = {10.1109/ICRA57147.2024.10611044},\n  timestamp    = {Mon, 19 Aug 2024 15:58:53 +0200},\n  biburl       = {https://dblp.org/rec/conf/icra/GuptaCP24.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Approximate Conformance Verification of Deep Neural Networks",
-      author: "Habeeb P, Pavithra Prabhakar",
-      year: 2024,
-      bibtex:
-        "@inproceedings{DBLP:conf/nfm/PP24,\n  author       = {Habeeb P and\n                  Pavithra Prabhakar},\n  editor       = {Nathaniel Benz and\n                  Divya Gopinath and\n                  Nija Shi},\n  title        = {Approximate Conformance Verification of Deep Neural Networks},\n  booktitle    = {{NASA} Formal Methods - 16th International Symposium, {NFM} 2024,\n                  Moffett Field, CA, USA, June 4-6, 2024, Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {14627},\n  pages        = {223--238},\n  publisher    = {Springer},\n  year         = {2024},\n  url          = {https://doi.org/10.1007/978-3-031-60698-4\\_13},\n  doi          = {10.1007/978-3-031-60698-4\\_13},\n  timestamp    = {Tue, 04 Jun 2024 15:39:38 +0200},\n  biburl       = {https://dblp.org/rec/conf/nfm/PP24.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Verification of Camera-Based Autonomous Systems",
-      author:
-        "Habeeb P, Nabarun Deka, Deepak D'Souza, Kamal Lodaya, Pavithra Prabhakar",
-      year: 2023,
-      bibtex:
-        "@article{DBLP:journals/tcad/PDDLP23,\n  author       = {Habeeb P and\n                  Nabarun Deka and\n                  Deepak D'Souza and\n                  Kamal Lodaya and\n                  Pavithra Prabhakar},\n  title        = {Verification of Camera-Based Autonomous Systems},\n  journal      = {{IEEE} Trans. Comput. Aided Des. Integr. Circuits Syst.},\n  volume       = {42},\n  number       = {10},\n  pages        = {3450--3463},\n  year         = {2023},\n  url          = {https://doi.org/10.1109/TCAD.2023.3240131},\n  doi          = {10.1109/TCAD.2023.3240131},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/tcad/PDDLP23.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Star Based Reachability Analysis of Interval Neural Networks",
-      author: "Vishnu Bondalakunta, Pavithra Prabhakar",
-      year: 2023,
-      bibtex:
-        "@inproceedings{DBLP:conf/cdc/BondalakuntaP23,\n  author       = {Vishnu Bondalakunta and\n                  Pavithra Prabhakar},\n  title        = {Star Based Reachability Analysis of Interval Neural Networks},\n  booktitle    = {62nd {IEEE} Conference on Decision and Control, {CDC} 2023, Singapore,\n                  December 13-15, 2023},\n  pages        = {7982--7987},\n  publisher    = {{IEEE}},\n  year         = {2023},\n  url          = {https://doi.org/10.1109/CDC49753.2023.10383228},\n  doi          = {10.1109/CDC49753.2023.10383228},\n  timestamp    = {Mon, 29 Jan 2024 17:30:32 +0100},\n  biburl       = {https://dblp.org/rec/conf/cdc/BondalakuntaP23.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Abstraction-Based Safety Analysis of Linear Dynamical Systems with\n                  Neural Network Controllers",
-      author: "Ratan Lal, Pavithra Prabhakar",
-      year: 2023,
-      bibtex:
-        "@inproceedings{DBLP:conf/cdc/LalP23,\n  author       = {Ratan Lal and\n                  Pavithra Prabhakar},\n  title        = {Abstraction-Based Safety Analysis of Linear Dynamical Systems with\n                  Neural Network Controllers},\n  booktitle    = {62nd {IEEE} Conference on Decision and Control, {CDC} 2023, Singapore,\n                  December 13-15, 2023},\n  pages        = {8006--8011},\n  publisher    = {{IEEE}},\n  year         = {2023},\n  url          = {https://doi.org/10.1109/CDC49753.2023.10383593},\n  doi          = {10.1109/CDC49753.2023.10383593},\n  timestamp    = {Mon, 29 Jan 2024 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/conf/cdc/LalP23.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Poster Abstract: Stability Analysis of Planar Probabilistic Piecewise\n                  Constant Derivative Systems",
-      author: "Spandan Das, Pavithra Prabhakar",
-      year: 2023,
-      bibtex:
-        "@inproceedings{DBLP:conf/hybrid/DasP23,\n  author       = {Spandan Das and\n                  Pavithra Prabhakar},\n  title        = {Poster Abstract: Stability Analysis of Planar Probabilistic Piecewise\n                  Constant Derivative Systems},\n  booktitle    = {Proceedings of the 26th {ACM} International Conference on Hybrid Systems:\n                  Computation and Control, {HSCC} 2023, San Antonio, TX, USA, May 9-12,\n                  2023},\n  pages        = {21:1--21:2},\n  publisher    = {{ACM}},\n  year         = {2023},\n  url          = {https://doi.org/10.1145/3575870.3589546},\n  doi          = {10.1145/3575870.3589546},\n  timestamp    = {Wed, 17 May 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/hybrid/DasP23.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "An End-to-End Multi-Robot Framework for Weed Control in Agricultural\n                  Fields",
-      author: "Jahid Chowdhury Choton, Mithila Jugulam, Pavithra Prabhakar",
-      year: 2023,
-      bibtex:
-        "@inproceedings{DBLP:conf/iccps/ChotonJP23,\n  author       = {Jahid Chowdhury Choton and\n                  Mithila Jugulam and\n                  Pavithra Prabhakar},\n  editor       = {Sayan Mitra and\n                  Nalini Venkatasubramanian and\n                  Abhishek Dubey and\n                  Lu Feng and\n                  Mahsa Ghasemi and\n                  Jonathan Sprinkle},\n  title        = {An End-to-End Multi-Robot Framework for Weed Control in Agricultural\n                  Fields},\n  booktitle    = {Proceedings of the {ACM/IEEE} 14th International Conference on Cyber-Physical\n                  Systems, {ICCPS} 2023, (with CPS-IoT Week 2023), San Antonio, TX,\n                  USA, May 9-12, 2023},\n  pages        = {243--244},\n  publisher    = {{ACM}},\n  year         = {2023},\n  url          = {https://doi.org/10.1145/3576841.3589617},\n  doi          = {10.1145/3576841.3589617},\n  timestamp    = {Wed, 17 May 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/iccps/ChotonJP23.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Optimal Multi-Robot Coverage Path Planning for Agricultural Fields\n                  using Motion Dynamics",
-      author: "Jahid Chowdhury Choton, Pavithra Prabhakar",
-      year: 2023,
-      bibtex:
-        "@inproceedings{DBLP:conf/icra/ChotonP23,\n  author       = {Jahid Chowdhury Choton and\n                  Pavithra Prabhakar},\n  title        = {Optimal Multi-Robot Coverage Path Planning for Agricultural Fields\n                  using Motion Dynamics},\n  booktitle    = {{IEEE} International Conference on Robotics and Automation, {ICRA}\n                  2023, London, UK, May 29 - June 2, 2023},\n  pages        = {11817--11823},\n  publisher    = {{IEEE}},\n  year         = {2023},\n  url          = {https://doi.org/10.1109/ICRA48891.2023.10160265},\n  doi          = {10.1109/ICRA48891.2023.10160265},\n  timestamp    = {Tue, 08 Aug 2023 10:24:29 +0200},\n  biburl       = {https://dblp.org/rec/conf/icra/ChotonP23.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Abstraction-based Probabilistic Stability Analysis of Polyhedral Probabilistic\n                  Hybrid Systems",
-      author: "Spandan Das, Pavithra Prabhakar",
-      year: 2023,
-      bibtex:
-        "@article{DBLP:journals/corr/abs-2304-02647,\n  author       = {Spandan Das and\n                  Pavithra Prabhakar},\n  title        = {Abstraction-based Probabilistic Stability Analysis of Polyhedral Probabilistic\n                  Hybrid Systems},\n  journal      = {CoRR},\n  volume       = {abs/2304.02647},\n  year         = {2023},\n  url          = {https://doi.org/10.48550/arXiv.2304.02647},\n  doi          = {10.48550/ARXIV.2304.02647},\n  eprinttype    = {arXiv},\n  eprint       = {2304.02647},\n  timestamp    = {Tue, 18 Apr 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/corr/abs-2304-02647.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Stability Analysis of Planar Probabilistic Piecewise Constant Derivative\n                  Systems",
-      author: "Spandan Das, Pavithra Prabhakar",
-      year: 2022,
-      bibtex:
-        "@inproceedings{DBLP:conf/qest/DasP22,\n  author       = {Spandan Das and\n                  Pavithra Prabhakar},\n  editor       = {Erika {\\'{A}}brah{\\'{a}}m and\n                  Marco Paolieri},\n  title        = {Stability Analysis of Planar Probabilistic Piecewise Constant Derivative\n                  Systems},\n  booktitle    = {Quantitative Evaluation of Systems - 19th International Conference,\n                  {QEST} 2022, Warsaw, Poland, September 12-16, 2022, Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {13479},\n  pages        = {192--213},\n  publisher    = {Springer},\n  year         = {2022},\n  url          = {https://doi.org/10.1007/978-3-031-16336-4\\_10},\n  doi          = {10.1007/978-3-031-16336-4\\_10},\n  timestamp    = {Tue, 21 Mar 2023 20:54:44 +0100},\n  biburl       = {https://dblp.org/rec/conf/qest/DasP22.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Bisimulations for Neural Network Reduction",
-      author: "Pavithra Prabhakar",
-      year: 2022,
-      bibtex:
-        "@inproceedings{DBLP:conf/vmcai/Prabhakar22,\n  author       = {Pavithra Prabhakar},\n  editor       = {Bernd Finkbeiner and\n                  Thomas Wies},\n  title        = {Bisimulations for Neural Network Reduction},\n  booktitle    = {Verification, Model Checking, and Abstract Interpretation - 23rd International\n                  Conference, {VMCAI} 2022, Philadelphia, PA, USA, January 16-18, 2022,\n                  Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {13182},\n  pages        = {285--300},\n  publisher    = {Springer},\n  year         = {2022},\n  url          = {https://doi.org/10.1007/978-3-030-94583-1\\_14},\n  doi          = {10.1007/978-3-030-94583-1\\_14},\n  timestamp    = {Sun, 19 Jan 2025 13:39:36 +0100},\n  biburl       = {https://dblp.org/rec/conf/vmcai/Prabhakar22.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Bayesian Statistical Model Checking for Multi-agent Systems using\n                  HyperPCTL",
-      author: "Spandan Das, Pavithra Prabhakar",
-      year: 2022,
-      bibtex:
-        "@article{DBLP:journals/corr/abs-2209-02672,\n  author       = {Spandan Das and\n                  Pavithra Prabhakar},\n  title        = {Bayesian Statistical Model Checking for Multi-agent Systems using\n                  HyperPCTL},\n  journal      = {CoRR},\n  volume       = {abs/2209.02672},\n  year         = {2022},\n  url          = {https://doi.org/10.48550/arXiv.2209.02672},\n  doi          = {10.48550/ARXIV.2209.02672},\n  eprinttype    = {arXiv},\n  eprint       = {2209.02672},\n  timestamp    = {Mon, 26 Sep 2022 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/corr/abs-2209-02672.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Simulation Relations for Abstraction-based Robust Control of Hybrid\n                  Dynamical Systems",
-      author: "Pavithra Prabhakar, Jun Liu",
-      year: 2021,
-      bibtex:
-        '@inproceedings{DBLP:conf/adhs/Prabhakar021,\n  author       = {Pavithra Prabhakar and\n                  Jun Liu},\n  editor       = {Rapha{\\"{e}}l M. Jungers and\n                  Necmiye Ozay and\n                  Alessandro Abate},\n  title        = {Simulation Relations for Abstraction-based Robust Control of Hybrid\n                  Dynamical Systems},\n  booktitle    = {7th {IFAC} Conference on Analysis and Design of Hybrid Systems, {ADHS}\n                  2021, Brussels, Belgium, July 7-9, 2021},\n  series       = {IFAC-PapersOnLine},\n  volume       = {54},\n  number       = {5},\n  pages        = {115--120},\n  publisher    = {Elsevier},\n  year         = {2021},\n  url          = {https://doi.org/10.1016/j.ifacol.2021.08.484},\n  doi          = {10.1016/J.IFACOL.2021.08.484},\n  timestamp    = {Tue, 14 Sep 2021 14:28:35 +0200},\n  biburl       = {https://dblp.org/rec/conf/adhs/Prabhakar021.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}',
-    },
-    {
-      title:
-        "Formally Verified Switching Logic for Recoverability of Aircraft Controller",
-      author:
-        "Ratan Lal, Aaron McKinnis, Dustin Hauptman, Shawn Keshmiri, Pavithra Prabhakar",
-      year: 2021,
-      bibtex:
-        "@inproceedings{DBLP:conf/cav/LalMHKP21,\n  author       = {Ratan Lal and\n                  Aaron McKinnis and\n                  Dustin Hauptman and\n                  Shawn Keshmiri and\n                  Pavithra Prabhakar},\n  editor       = {Alexandra Silva and\n                  K. Rustan M. Leino},\n  title        = {Formally Verified Switching Logic for Recoverability of Aircraft Controller},\n  booktitle    = {Computer Aided Verification - 33rd International Conference, {CAV}\n                  2021, Virtual Event, July 20-23, 2021, Proceedings, Part {I}},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {12759},\n  pages        = {566--579},\n  publisher    = {Springer},\n  year         = {2021},\n  url          = {https://doi.org/10.1007/978-3-030-81685-8\\_27},\n  doi          = {10.1007/978-3-030-81685-8\\_27},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/cav/LalMHKP21.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Time-Optimal Multi-Quadrotor Trajectory Planning for Pesticide Spraying",
-      author: "Ratan Lal, Pavithra Prabhakar",
-      year: 2021,
-      bibtex:
-        "@inproceedings{DBLP:conf/icra/LalP21,\n  author       = {Ratan Lal and\n                  Pavithra Prabhakar},\n  title        = {Time-Optimal Multi-Quadrotor Trajectory Planning for Pesticide Spraying},\n  booktitle    = {{IEEE} International Conference on Robotics and Automation, {ICRA}\n                  2021, Xi'an, China, May 30 - June 5, 2021},\n  pages        = {7965--7971},\n  publisher    = {{IEEE}},\n  year         = {2021},\n  url          = {https://doi.org/10.1109/ICRA48506.2021.9561972},\n  doi          = {10.1109/ICRA48506.2021.9561972},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/icra/LalP21.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Probabilistic Stability Analysis of Planar Robots with Piecewise Constant\n                  Derivative Dynamics",
-      author: "Spandan Das, Pavithra Prabhakar",
-      year: 2021,
-      bibtex:
-        "@article{DBLP:journals/corr/abs-2109-08265,\n  author       = {Spandan Das and\n                  Pavithra Prabhakar},\n  title        = {Probabilistic Stability Analysis of Planar Robots with Piecewise Constant\n                  Derivative Dynamics},\n  journal      = {CoRR},\n  volume       = {abs/2109.08265},\n  year         = {2021},\n  url          = {https://arxiv.org/abs/2109.08265},\n  eprinttype    = {arXiv},\n  eprint       = {2109.08265},\n  timestamp    = {Wed, 22 Sep 2021 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/corr/abs-2109-08265.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Bisimulations for Neural Network Reduction",
-      author: "Pavithra Prabhakar",
-      year: 2021,
-      bibtex:
-        "@article{DBLP:journals/corr/abs-2110-03726,\n  author       = {Pavithra Prabhakar},\n  title        = {Bisimulations for Neural Network Reduction},\n  journal      = {CoRR},\n  volume       = {abs/2110.03726},\n  year         = {2021},\n  url          = {https://arxiv.org/abs/2110.03726},\n  eprinttype    = {arXiv},\n  eprint       = {2110.03726},\n  timestamp    = {Thu, 21 Oct 2021 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/corr/abs-2110-03726.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Safety Analysis of Linear Discrete-time Stochastic Systems: Work-in-Progress",
-      author: "Ratan Lal, Pavithra Prabhakar",
-      year: 2020,
-      bibtex:
-        "@inproceedings{DBLP:conf/emsoft/LalP20,\n  author       = {Ratan Lal and\n                  Pavithra Prabhakar},\n  editor       = {Tulika Mitra and\n                  Andreas Gerstlauer},\n  title        = {Safety Analysis of Linear Discrete-time Stochastic Systems: Work-in-Progress},\n  booktitle    = {20th International Conference on Embedded Software, {EMSOFT} 2020,\n                  Singapore, September 20-25, 2020},\n  pages        = {34--36},\n  publisher    = {{IEEE}},\n  year         = {2020},\n  url          = {https://doi.org/10.1109/EMSOFT51651.2020.9244026},\n  doi          = {10.1109/EMSOFT51651.2020.9244026},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/emsoft/LalP20.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Bayesian Statistical Model Checking for Continuous Stochastic Logic",
-      author: "Ratan Lal, Weikang Duan, Pavithra Prabhakar",
-      year: 2020,
-      bibtex:
-        "@inproceedings{DBLP:conf/memocode/LalDP20,\n  author       = {Ratan Lal and\n                  Weikang Duan and\n                  Pavithra Prabhakar},\n  title        = {Bayesian Statistical Model Checking for Continuous Stochastic Logic},\n  booktitle    = {18th {ACM/IEEE} International Conference on Formal Methods and Models\n                  for System Design, {MEMOCODE} 2020, Jaipur, India, December 2-4, 2020},\n  pages        = {1--11},\n  publisher    = {{IEEE}},\n  year         = {2020},\n  url          = {https://doi.org/10.1109/MEMOCODE51338.2020.9315001},\n  doi          = {10.1109/MEMOCODE51338.2020.9315001},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/memocode/LalDP20.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Model Checking Timed Hyperproperties in Discrete-Time Systems",
-      author: "Borzoo Bonakdarpour, Pavithra Prabhakar, C{\\'{e}",
-      year: 2020,
-      bibtex:
-        "@inproceedings{DBLP:conf/nfm/BonakdarpourPS20,\n  author       = {Borzoo Bonakdarpour and\n                  Pavithra Prabhakar and\n                  C{\\'{e}}sar S{\\'{a}}nchez},\n  editor       = {Ritchie Lee and\n                  Susmit Jha and\n                  Anastasia Mavridou},\n  title        = {Model Checking Timed Hyperproperties in Discrete-Time Systems},\n  booktitle    = {{NASA} Formal Methods - 12th International Symposium, {NFM} 2020,\n                  Moffett Field, CA, USA, May 11-15, 2020, Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {12229},\n  pages        = {311--328},\n  publisher    = {Springer},\n  year         = {2020},\n  url          = {https://doi.org/10.1007/978-3-030-55754-6\\_18},\n  doi          = {10.1007/978-3-030-55754-6\\_18},\n  timestamp    = {Wed, 28 Dec 2022 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/conf/nfm/BonakdarpourPS20.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Verifying Band Convergence for Sampled Control Systems",
-      author:
-        "P. Ezudheen, Zahra Rahimi Afzal, Pavithra Prabhakar, Deepak D'Souza, Meenakshi D'Souza",
-      year: 2020,
-      bibtex:
-        "@inproceedings{DBLP:conf/nfm/EzudheenAPDD20,\n  author       = {P. Ezudheen and\n                  Zahra Rahimi Afzal and\n                  Pavithra Prabhakar and\n                  Deepak D'Souza and\n                  Meenakshi D'Souza},\n  editor       = {Ritchie Lee and\n                  Susmit Jha and\n                  Anastasia Mavridou},\n  title        = {Verifying Band Convergence for Sampled Control Systems},\n  booktitle    = {{NASA} Formal Methods - 12th International Symposium, {NFM} 2020,\n                  Moffett Field, CA, USA, May 11-15, 2020, Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {12229},\n  pages        = {329--349},\n  publisher    = {Springer},\n  year         = {2020},\n  url          = {https://doi.org/10.1007/978-3-030-55754-6\\_19},\n  doi          = {10.1007/978-3-030-55754-6\\_19},\n  timestamp    = {Sun, 06 Oct 2024 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/nfm/EzudheenAPDD20.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Hybridization for Stability Verification of Nonlinear Switched Systems",
-      author: "Miriam Garc{\\'{\\i}",
-      year: 2020,
-      bibtex:
-        "@inproceedings{DBLP:conf/rtss/SotoP20,\n  author       = {Miriam Garc{\\'{\\i}}a Soto and\n                  Pavithra Prabhakar},\n  title        = {Hybridization for Stability Verification of Nonlinear Switched Systems},\n  booktitle    = {41st {IEEE} Real-Time Systems Symposium, {RTSS} 2020, Houston, TX,\n                  USA, December 1-4, 2020},\n  pages        = {244--256},\n  publisher    = {{IEEE}},\n  year         = {2020},\n  url          = {https://doi.org/10.1109/RTSS49844.2020.00031},\n  doi          = {10.1109/RTSS49844.2020.00031},\n  timestamp    = {Thu, 14 Oct 2021 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/rtss/SotoP20.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Abstraction based Output Range Analysis for Neural Networks",
-      author: "Pavithra Prabhakar, Zahra Rahimi Afzal",
-      year: 2020,
-      bibtex:
-        "@article{DBLP:journals/corr/abs-2007-09527,\n  author       = {Pavithra Prabhakar and\n                  Zahra Rahimi Afzal},\n  title        = {Abstraction based Output Range Analysis for Neural Networks},\n  journal      = {CoRR},\n  volume       = {abs/2007.09527},\n  year         = {2020},\n  url          = {https://arxiv.org/abs/2007.09527},\n  eprinttype    = {arXiv},\n  eprint       = {2007.09527},\n  timestamp    = {Tue, 28 Jul 2020 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/corr/abs-2007-09527.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Optimal tool path planning for 3D printing with spatio-temporal and\n                  thermal constraints",
-      author: "Zahra Rahimi Afzal, Pavana Prabhakar, Pavithra Prabhakar",
-      year: 2020,
-      bibtex:
-        "@article{DBLP:journals/corr/abs-2007-09626,\n  author       = {Zahra Rahimi Afzal and\n                  Pavana Prabhakar and\n                  Pavithra Prabhakar},\n  title        = {Optimal tool path planning for 3D printing with spatio-temporal and\n                  thermal constraints},\n  journal      = {CoRR},\n  volume       = {abs/2007.09626},\n  year         = {2020},\n  url          = {https://arxiv.org/abs/2007.09626},\n  eprinttype    = {arXiv},\n  eprint       = {2007.09626},\n  timestamp    = {Tue, 28 Jul 2020 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/corr/abs-2007-09626.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Learning event-driven switched linear systems",
-      author: "Atreyee Kundu, Pavithra Prabhakar",
-      year: 2020,
-      bibtex:
-        "@article{DBLP:journals/corr/abs-2009-12831,\n  author       = {Atreyee Kundu and\n                  Pavithra Prabhakar},\n  title        = {Learning event-driven switched linear systems},\n  journal      = {CoRR},\n  volume       = {abs/2009.12831},\n  year         = {2020},\n  url          = {https://arxiv.org/abs/2009.12831},\n  eprinttype    = {arXiv},\n  eprint       = {2009.12831},\n  timestamp    = {Wed, 30 Sep 2020 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/corr/abs-2009-12831.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Counterexample Guided Abstraction Refinement for Polyhedral Probabilistic\n                  Hybrid Systems",
-      author: "Ratan Lal, Pavithra Prabhakar",
-      year: 2019,
-      bibtex:
-        "@article{DBLP:journals/tecs/LalP19,\n  author       = {Ratan Lal and\n                  Pavithra Prabhakar},\n  title        = {Counterexample Guided Abstraction Refinement for Polyhedral Probabilistic\n                  Hybrid Systems},\n  journal      = {{ACM} Trans. Embed. Comput. Syst.},\n  volume       = {18},\n  number       = {5s},\n  pages        = {98:1--98:23},\n  year         = {2019},\n  url          = {https://doi.org/10.1145/3358217},\n  doi          = {10.1145/3358217},\n  timestamp    = {Sun, 19 Jan 2025 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/journals/tecs/LalP19.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Optimal Path Planning for {\\(\\omega\\)}-regular Objectives with Abstraction-Refinement",
-      author: "Yoke Peng Leong, Pavithra Prabhakar",
-      year: 2019,
-      bibtex:
-        "@inproceedings{DBLP:conf/icra/LeongP19,\n  author       = {Yoke Peng Leong and\n                  Pavithra Prabhakar},\n  title        = {Optimal Path Planning for {\\(\\omega\\)}-regular Objectives with Abstraction-Refinement},\n  booktitle    = {International Conference on Robotics and Automation, {ICRA} 2019,\n                  Montreal, QC, Canada, May 20-24, 2019},\n  pages        = {7683--7689},\n  publisher    = {{IEEE}},\n  year         = {2019},\n  url          = {https://doi.org/10.1109/ICRA.2019.8794209},\n  doi          = {10.1109/ICRA.2019.8794209},\n  timestamp    = {Wed, 16 Oct 2019 14:14:51 +0200},\n  biburl       = {https://dblp.org/rec/conf/icra/LeongP19.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Compositional construction of bounded error over-approximations of\n                  acyclic interconnected continuous dynamical systems",
-      author: "Ratan Lal, Pavithra Prabhakar",
-      year: 2019,
-      bibtex:
-        "@inproceedings{DBLP:conf/memocode/LalP19,\n  author       = {Ratan Lal and\n                  Pavithra Prabhakar},\n  editor       = {Partha S. Roop and\n                  Naijun Zhan and\n                  Sicun Gao and\n                  Pierluigi Nuzzo},\n  title        = {Compositional construction of bounded error over-approximations of\n                  acyclic interconnected continuous dynamical systems},\n  booktitle    = {Proceedings of the 17th {ACM-IEEE} International Conference on Formal\n                  Methods and Models for System Design, {MEMOCODE} 2019, La Jolla, CA,\n                  USA, October 9-11, 2019},\n  pages        = {12:1--12:5},\n  publisher    = {{ACM}},\n  year         = {2019},\n  url          = {https://doi.org/10.1145/3359986.3361210},\n  doi          = {10.1145/3359986.3361210},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/memocode/LalP19.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Abstraction based Output Range Analysis for Neural Networks",
-      author: "Pavithra Prabhakar, Zahra Rahimi Afzal",
-      year: 2019,
-      bibtex:
-        "@inproceedings{DBLP:conf/nips/PrabhakarA19,\n  author       = {Pavithra Prabhakar and\n                  Zahra Rahimi Afzal},\n  editor       = {Hanna M. Wallach and\n                  Hugo Larochelle and\n                  Alina Beygelzimer and\n                  Florence d'Alch{\\'{e}}{-}Buc and\n                  Emily B. Fox and\n                  Roman Garnett},\n  title        = {Abstraction based Output Range Analysis for Neural Networks},\n  booktitle    = {Advances in Neural Information Processing Systems 32: Annual Conference\n                  on Neural Information Processing Systems 2019, NeurIPS 2019, December\n                  8-14, 2019, Vancouver, BC, Canada},\n  pages        = {15762--15772},\n  year         = {2019},\n  url          = {https://proceedings.neurips.cc/paper/2019/hash/5df0385cba256a135be596dbe28fa7aa-Abstract.html},\n  timestamp    = {Mon, 16 May 2022 15:41:51 +0200},\n  biburl       = {https://dblp.org/rec/conf/nips/PrabhakarA19.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Proceedings of the 22nd {ACM} International Conference on Hybrid Systems:\n                  Computation and Control, {HSCC} 2019, Montreal, QC, Canada, April\n                  16-18, 2019",
-      author: "",
-      year: 2019,
-      bibtex:
-        "@proceedings{DBLP:conf/hybrid/2019,\n  editor       = {Necmiye Ozay and\n                  Pavithra Prabhakar},\n  title        = {Proceedings of the 22nd {ACM} International Conference on Hybrid Systems:\n                  Computation and Control, {HSCC} 2019, Montreal, QC, Canada, April\n                  16-18, 2019},\n  publisher    = {{ACM}},\n  year         = {2019},\n  url          = {https://dl.acm.org/citation.cfm?id=3302504},\n  isbn         = {978-1-4503-6282-5},\n  timestamp    = {Sun, 07 Apr 2019 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/hybrid/2019.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Simulations and bisimulations for analysis of stability with respect\n                  to inputs of hybrid systems",
-      author: "Pavithra Prabhakar, Jun Liu, Richard M. Murray",
-      year: 2018,
-      bibtex:
-        "@article{DBLP:journals/deds/PrabhakarLM18,\n  author       = {Pavithra Prabhakar and\n                  Jun Liu and\n                  Richard M. Murray},\n  title        = {Simulations and bisimulations for analysis of stability with respect\n                  to inputs of hybrid systems},\n  journal      = {Discret. Event Dyn. Syst.},\n  volume       = {28},\n  number       = {3},\n  pages        = {349--374},\n  year         = {2018},\n  url          = {https://doi.org/10.1007/s10626-017-0262-9},\n  doi          = {10.1007/S10626-017-0262-9},\n  timestamp    = {Mon, 08 Jun 2020 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/deds/PrabhakarLM18.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Hierarchical Abstractions for Reachability Analysis of Probabilistic\n                  Hybrid Systems",
-      author: "Ratan Lal, Pavithra Prabhakar",
-      year: 2018,
-      bibtex:
-        "@inproceedings{DBLP:conf/allerton/LalP18,\n  author       = {Ratan Lal and\n                  Pavithra Prabhakar},\n  title        = {Hierarchical Abstractions for Reachability Analysis of Probabilistic\n                  Hybrid Systems},\n  booktitle    = {56th Annual Allerton Conference on Communication, Control, and Computing,\n                  Allerton 2018, Monticello, IL, USA, October 2-5, 2018},\n  pages        = {848--855},\n  publisher    = {{IEEE}},\n  year         = {2018},\n  url          = {https://doi.org/10.1109/ALLERTON.2018.8635976},\n  doi          = {10.1109/ALLERTON.2018.8635976},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/allerton/LalP18.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Relating Syntactic and Semantic Perturbations of Hybrid Automata",
-      author: "Nima Roohi, Pavithra Prabhakar, Mahesh Viswanathan",
-      year: 2018,
-      bibtex:
-        '@inproceedings{DBLP:conf/concur/RoohiP018,\n  author       = {Nima Roohi and\n                  Pavithra Prabhakar and\n                  Mahesh Viswanathan},\n  editor       = {Sven Schewe and\n                  Lijun Zhang},\n  title        = {Relating Syntactic and Semantic Perturbations of Hybrid Automata},\n  booktitle    = {29th International Conference on Concurrency Theory, {CONCUR} 2018,\n                  September 4-7, 2018, Beijing, China},\n  series       = {LIPIcs},\n  volume       = {118},\n  pages        = {26:1--26:16},\n  publisher    = {Schloss Dagstuhl - Leibniz-Zentrum f{\\"{u}}r Informatik},\n  year         = {2018},\n  url          = {https://doi.org/10.4230/LIPIcs.CONCUR.2018.26},\n  doi          = {10.4230/LIPICS.CONCUR.2018.26},\n  timestamp    = {Tue, 11 Feb 2020 15:52:14 +0100},\n  biburl       = {https://dblp.org/rec/conf/concur/RoohiP018.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}',
-    },
-    {
-      title:
-        "Averist: Algorithmic Verifier for Stability of Linear Hybrid Systems",
-      author: "Miriam Garcia Soto, Pavithra Prabhakar",
-      year: 2018,
-      bibtex:
-        "@inproceedings{DBLP:conf/hybrid/SotoP18,\n  author       = {Miriam Garcia Soto and\n                  Pavithra Prabhakar},\n  editor       = {Maria Prandini and\n                  Jyotirmoy V. Deshmukh},\n  title        = {Averist: Algorithmic Verifier for Stability of Linear Hybrid Systems},\n  booktitle    = {Proceedings of the 21st International Conference on Hybrid Systems:\n                  Computation and Control (part of {CPS} Week), {HSCC} 2018, Porto,\n                  Portugal, April 11-13, 2018},\n  pages        = {259--264},\n  publisher    = {{ACM}},\n  year         = {2018},\n  url          = {https://doi.org/10.1145/3178126.3178154},\n  doi          = {10.1145/3178126.3178154},\n  timestamp    = {Mon, 15 Jun 2020 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/hybrid/SotoP18.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Bounded Verification of Reachability of Probabilistic Hybrid Systems",
-      author: "Ratan Lal, Pavithra Prabhakar",
-      year: 2018,
-      bibtex:
-        "@inproceedings{DBLP:conf/qest/LalP18,\n  author       = {Ratan Lal and\n                  Pavithra Prabhakar},\n  editor       = {Annabelle McIver and\n                  Andr{\\'{a}}s Horv{\\'{a}}th},\n  title        = {Bounded Verification of Reachability of Probabilistic Hybrid Systems},\n  booktitle    = {Quantitative Evaluation of Systems - 15th International Conference,\n                  {QEST} 2018, Beijing, China, September 4-7, 2018, Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {11024},\n  pages        = {240--256},\n  publisher    = {Springer},\n  year         = {2018},\n  url          = {https://doi.org/10.1007/978-3-319-99154-2\\_15},\n  doi          = {10.1007/978-3-319-99154-2\\_15},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/qest/LalP18.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Automatic Trace Generation for Signal Temporal Logic",
-      author: "Pavithra Prabhakar, Ratan Lal, James Kapinski",
-      year: 2018,
-      bibtex:
-        "@inproceedings{DBLP:conf/rtss/PrabhakarLK18,\n  author       = {Pavithra Prabhakar and\n                  Ratan Lal and\n                  James Kapinski},\n  title        = {Automatic Trace Generation for Signal Temporal Logic},\n  booktitle    = {2018 {IEEE} Real-Time Systems Symposium, {RTSS} 2018, Nashville, TN,\n                  USA, December 11-14, 2018},\n  pages        = {208--217},\n  publisher    = {{IEEE} Computer Society},\n  year         = {2018},\n  url          = {https://doi.org/10.1109/RTSS.2018.00038},\n  doi          = {10.1109/RTSS.2018.00038},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/rtss/PrabhakarLK18.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Formal Modeling and Analysis of Timed Systems - 16th International\n                  Conference, {FORMATS} 2018, Beijing, China, September 4-6, 2018, Proceedings",
-      author: "",
-      year: 2018,
-      bibtex:
-        "@proceedings{DBLP:conf/formats/2018,\n  editor       = {David N. Jansen and\n                  Pavithra Prabhakar},\n  title        = {Formal Modeling and Analysis of Timed Systems - 16th International\n                  Conference, {FORMATS} 2018, Beijing, China, September 4-6, 2018, Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {11022},\n  publisher    = {Springer},\n  year         = {2018},\n  url          = {https://doi.org/10.1007/978-3-030-00151-3},\n  doi          = {10.1007/978-3-030-00151-3},\n  isbn         = {978-3-030-00150-6},\n  timestamp    = {Sat, 09 Apr 2022 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/formats/2018.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Safety analysis using compositional bounded error approximations of\n                  communicating hybrid systems",
-      author: "Ratan Lal, Pavithra Prabhakar",
-      year: 2017,
-      bibtex:
-        "@inproceedings{DBLP:conf/cdc/LalP17,\n  author       = {Ratan Lal and\n                  Pavithra Prabhakar},\n  title        = {Safety analysis using compositional bounded error approximations of\n                  communicating hybrid systems},\n  booktitle    = {56th {IEEE} Annual Conference on Decision and Control, {CDC} 2017,\n                  Melbourne, Australia, December 12-15, 2017},\n  pages        = {2378--2383},\n  publisher    = {{IEEE}},\n  year         = {2017},\n  url          = {https://doi.org/10.1109/CDC.2017.8263997},\n  doi          = {10.1109/CDC.2017.8263997},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/cdc/LalP17.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Optimal multi-robot path planning for pesticide spraying in agricultural\n                  fields",
-      author: "Ratan Lal, Ajay Sharda, Pavithra Prabhakar",
-      year: 2017,
-      bibtex:
-        "@inproceedings{DBLP:conf/cdc/LalSP17,\n  author       = {Ratan Lal and\n                  Ajay Sharda and\n                  Pavithra Prabhakar},\n  title        = {Optimal multi-robot path planning for pesticide spraying in agricultural\n                  fields},\n  booktitle    = {56th {IEEE} Annual Conference on Decision and Control, {CDC} 2017,\n                  Melbourne, Australia, December 12-15, 2017},\n  pages        = {5815--5820},\n  publisher    = {{IEEE}},\n  year         = {2017},\n  url          = {https://doi.org/10.1109/CDC.2017.8264538},\n  doi          = {10.1109/CDC.2017.8264538},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/cdc/LalSP17.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Formal Synthesis of Stabilizing Controllers for Switched Systems",
-      author: "Pavithra Prabhakar, Miriam Garcia Soto",
-      year: 2017,
-      bibtex:
-        "@inproceedings{DBLP:conf/hybrid/PrabhakarS17,\n  author       = {Pavithra Prabhakar and\n                  Miriam Garcia Soto},\n  editor       = {Goran Frehse and\n                  Sayan Mitra},\n  title        = {Formal Synthesis of Stabilizing Controllers for Switched Systems},\n  booktitle    = {Proceedings of the 20th International Conference on Hybrid Systems:\n                  Computation and Control, {HSCC} 2017, Pittsburgh, PA, USA, April 18-20,\n                  2017},\n  pages        = {111--120},\n  publisher    = {{ACM}},\n  year         = {2017},\n  url          = {https://doi.org/10.1145/3049797.3049822},\n  doi          = {10.1145/3049797.3049822},\n  timestamp    = {Tue, 06 Nov 2018 11:07:36 +0100},\n  biburl       = {https://dblp.org/rec/conf/hybrid/PrabhakarS17.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Robust Model Checking of Timed Automata under Clock Drifts",
-      author: "Nima Roohi, Pavithra Prabhakar, Mahesh Viswanathan",
-      year: 2017,
-      bibtex:
-        "@inproceedings{DBLP:conf/hybrid/RoohiP017,\n  author       = {Nima Roohi and\n                  Pavithra Prabhakar and\n                  Mahesh Viswanathan},\n  editor       = {Goran Frehse and\n                  Sayan Mitra},\n  title        = {Robust Model Checking of Timed Automata under Clock Drifts},\n  booktitle    = {Proceedings of the 20th International Conference on Hybrid Systems:\n                  Computation and Control, {HSCC} 2017, Pittsburgh, PA, USA, April 18-20,\n                  2017},\n  pages        = {153--162},\n  publisher    = {{ACM}},\n  year         = {2017},\n  url          = {https://doi.org/10.1145/3049797.3049821},\n  doi          = {10.1145/3049797.3049821},\n  timestamp    = {Tue, 06 Nov 2018 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/conf/hybrid/RoohiP017.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Abstraction based reachability analysis for finite branching stochastic\n                  hybrid systems",
-      author: "Wenji Zhang, Pavithra Prabhakar, Balasubramaniam Natarajan",
-      year: 2017,
-      bibtex:
-        "@inproceedings{DBLP:conf/iccps/ZhangPN17,\n  author       = {Wenji Zhang and\n                  Pavithra Prabhakar and\n                  Balasubramaniam Natarajan},\n  editor       = {Sonia Mart{\\'{\\i}}nez and\n                  Eduardo Tovar and\n                  Chris Gill and\n                  Bruno Sinopoli},\n  title        = {Abstraction based reachability analysis for finite branching stochastic\n                  hybrid systems},\n  booktitle    = {Proceedings of the 8th International Conference on Cyber-Physical\n                  Systems, {ICCPS} 2017, Pittsburgh, Pennsylvania, USA, April 18-20,\n                  2017},\n  pages        = {121--130},\n  publisher    = {{ACM}},\n  year         = {2017},\n  url          = {https://doi.org/10.1145/3055004.3055023},\n  doi          = {10.1145/3055004.3055023},\n  timestamp    = {Fri, 03 Sep 2021 09:01:40 +0200},\n  biburl       = {https://dblp.org/rec/conf/iccps/ZhangPN17.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "{HARE:} {A} Hybrid Abstraction Refinement Engine for Verifying Non-linear\n                  Hybrid Automata",
-      author: "Nima Roohi, Pavithra Prabhakar, Mahesh Viswanathan",
-      year: 2017,
-      bibtex:
-        "@inproceedings{DBLP:conf/tacas/RoohiP017,\n  author       = {Nima Roohi and\n                  Pavithra Prabhakar and\n                  Mahesh Viswanathan},\n  editor       = {Axel Legay and\n                  Tiziana Margaria},\n  title        = {{HARE:} {A} Hybrid Abstraction Refinement Engine for Verifying Non-linear\n                  Hybrid Automata},\n  booktitle    = {Tools and Algorithms for the Construction and Analysis of Systems\n                  - 23rd International Conference, {TACAS} 2017, Held as Part of the\n                  European Joint Conferences on Theory and Practice of Software, {ETAPS}\n                  2017, Uppsala, Sweden, April 22-29, 2017, Proceedings, Part {I}},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {10205},\n  pages        = {573--588},\n  year         = {2017},\n  url          = {https://doi.org/10.1007/978-3-662-54577-5\\_33},\n  doi          = {10.1007/978-3-662-54577-5\\_33},\n  timestamp    = {Tue, 14 May 2019 10:00:53 +0200},\n  biburl       = {https://dblp.org/rec/conf/tacas/RoohiP017.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Numerical Software Verification - 9th International Workshop, {NSV}\n                  2016, Toronto, ON, Canada, July 17-18, 2016, [collocated with {CAV}\n                  2016], Revised Selected Papers",
-      author: "",
-      year: 2017,
-      bibtex:
-        "@proceedings{DBLP:conf/cav/2016nsv,\n  editor       = {Sergiy Bogomolov and\n                  Matthieu Martel and\n                  Pavithra Prabhakar},\n  title        = {Numerical Software Verification - 9th International Workshop, {NSV}\n                  2016, Toronto, ON, Canada, July 17-18, 2016, [collocated with {CAV}\n                  2016], Revised Selected Papers},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {10152},\n  year         = {2017},\n  url          = {https://doi.org/10.1007/978-3-319-54292-8},\n  doi          = {10.1007/978-3-319-54292-8},\n  isbn         = {978-3-319-54291-1},\n  timestamp    = {Tue, 14 May 2019 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/cav/2016nsv.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Optimal control with regular objectives using an abstraction-refinement\n                  approach",
-      author: "Yoke Peng Leong, Pavithra Prabhakar",
-      year: 2016,
-      bibtex:
-        "@inproceedings{DBLP:conf/amcc/LeongP16,\n  author       = {Yoke Peng Leong and\n                  Pavithra Prabhakar},\n  title        = {Optimal control with regular objectives using an abstraction-refinement\n                  approach},\n  booktitle    = {2016 American Control Conference, {ACC} 2016, Boston, MA, USA, July\n                  6-8, 2016},\n  pages        = {5161--5168},\n  publisher    = {{IEEE}},\n  year         = {2016},\n  url          = {https://doi.org/10.1109/ACC.2016.7526478},\n  doi          = {10.1109/ACC.2016.7526478},\n  timestamp    = {Wed, 16 Oct 2019 14:14:51 +0200},\n  biburl       = {https://dblp.org/rec/conf/amcc/LeongP16.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Counterexample Guided Abstraction Refinement for Stability Analysis",
-      author: "Pavithra Prabhakar, Miriam Garcia Soto",
-      year: 2016,
-      bibtex:
-        "@inproceedings{DBLP:conf/cav/PrabhakarS16,\n  author       = {Pavithra Prabhakar and\n                  Miriam Garcia Soto},\n  editor       = {Swarat Chaudhuri and\n                  Azadeh Farzan},\n  title        = {Counterexample Guided Abstraction Refinement for Stability Analysis},\n  booktitle    = {Computer Aided Verification - 28th International Conference, {CAV}\n                  2016, Toronto, ON, Canada, July 17-23, 2016, Proceedings, Part {I}},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {9779},\n  pages        = {495--512},\n  publisher    = {Springer},\n  year         = {2016},\n  url          = {https://doi.org/10.1007/978-3-319-41528-4\\_27},\n  doi          = {10.1007/978-3-319-41528-4\\_27},\n  timestamp    = {Tue, 14 May 2019 10:00:43 +0200},\n  biburl       = {https://dblp.org/rec/conf/cav/PrabhakarS16.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Bisimulations for input-output stability of hybrid systems",
-      author: "Pavithra Prabhakar, Jun Liu",
-      year: 2016,
-      bibtex:
-        "@inproceedings{DBLP:conf/cdc/PrabhakarL16,\n  author       = {Pavithra Prabhakar and\n                  Jun Liu},\n  title        = {Bisimulations for input-output stability of hybrid systems},\n  booktitle    = {55th {IEEE} Conference on Decision and Control, {CDC} 2016, Las Vegas,\n                  NV, USA, December 12-14, 2016},\n  pages        = {5515--5520},\n  publisher    = {{IEEE}},\n  year         = {2016},\n  url          = {https://doi.org/10.1109/CDC.2016.7799116},\n  doi          = {10.1109/CDC.2016.7799116},\n  timestamp    = {Fri, 04 Mar 2022 13:29:43 +0100},\n  biburl       = {https://dblp.org/rec/conf/cdc/PrabhakarL16.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "An algorithmic approach to global asymptotic stability verification\n                  of hybrid systems",
-      author: "Pavithra Prabhakar, Miriam Garcia Soto",
-      year: 2016,
-      bibtex:
-        "@inproceedings{DBLP:conf/emsoft/PrabhakarS16,\n  author       = {Pavithra Prabhakar and\n                  Miriam Garcia Soto},\n  editor       = {Petru Eles and\n                  Rahul Mangharam},\n  title        = {An algorithmic approach to global asymptotic stability verification\n                  of hybrid systems},\n  booktitle    = {2016 International Conference on Embedded Software, {EMSOFT} 2016,\n                  Pittsburgh, Pennsylvania, USA, October 1-7, 2016},\n  pages        = {9:1--9:10},\n  publisher    = {{ACM}},\n  year         = {2016},\n  url          = {https://doi.org/10.1145/2968478.2968483},\n  doi          = {10.1145/2968478.2968483},\n  timestamp    = {Thu, 08 Aug 2019 11:04:11 +0200},\n  biburl       = {https://dblp.org/rec/conf/emsoft/PrabhakarS16.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Hybridization for Stability Analysis of Switched Linear Systems",
-      author: "Pavithra Prabhakar, Miriam Garcia Soto",
-      year: 2016,
-      bibtex:
-        "@inproceedings{DBLP:conf/hybrid/PrabhakarS16,\n  author       = {Pavithra Prabhakar and\n                  Miriam Garcia Soto},\n  editor       = {Alessandro Abate and\n                  Georgios Fainekos},\n  title        = {Hybridization for Stability Analysis of Switched Linear Systems},\n  booktitle    = {Proceedings of the 19th International Conference on Hybrid Systems:\n                  Computation and Control, {HSCC} 2016, Vienna, Austria, April 12-14,\n                  2016},\n  pages        = {71--80},\n  publisher    = {{ACM}},\n  year         = {2016},\n  url          = {https://doi.org/10.1145/2883817.2883840},\n  doi          = {10.1145/2883817.2883840},\n  timestamp    = {Fri, 13 Aug 2021 11:37:40 +0200},\n  biburl       = {https://dblp.org/rec/conf/hybrid/PrabhakarS16.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Verification Techniques for Hybrid Systems",
-      author: "Pavithra Prabhakar, Miriam Garcia Soto, Ratan Lal",
-      year: 2016,
-      bibtex:
-        "@inproceedings{DBLP:conf/isola/Prabhakar16,\n  author       = {Pavithra Prabhakar and\n                  Miriam Garcia Soto and\n                  Ratan Lal},\n  editor       = {Tiziana Margaria and\n                  Bernhard Steffen},\n  title        = {Verification Techniques for Hybrid Systems},\n  booktitle    = {Leveraging Applications of Formal Methods, Verification and Validation:\n                  Discussion, Dissemination, Applications - 7th International Symposium,\n                  ISoLA 2016, Imperial, Corfu, Greece, October 10-14, 2016, Proceedings,\n                  Part {II}},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {9953},\n  pages        = {833--842},\n  year         = {2016},\n  url          = {https://doi.org/10.1007/978-3-319-47169-3\\_61},\n  doi          = {10.1007/978-3-319-47169-3\\_61},\n  timestamp    = {Tue, 14 May 2019 10:00:41 +0200},\n  biburl       = {https://dblp.org/rec/conf/isola/Prabhakar16.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Hybridization Based {CEGAR} for Hybrid Automata with Affine Dynamics",
-      author: "Nima Roohi, Pavithra Prabhakar, Mahesh Viswanathan",
-      year: 2016,
-      bibtex:
-        "@inproceedings{DBLP:conf/tacas/RoohiP016,\n  author       = {Nima Roohi and\n                  Pavithra Prabhakar and\n                  Mahesh Viswanathan},\n  editor       = {Marsha Chechik and\n                  Jean{-}Fran{\\c{c}}ois Raskin},\n  title        = {Hybridization Based {CEGAR} for Hybrid Automata with Affine Dynamics},\n  booktitle    = {Tools and Algorithms for the Construction and Analysis of Systems\n                  - 22nd International Conference, {TACAS} 2016, Held as Part of the\n                  European Joint Conferences on Theory and Practice of Software, {ETAPS}\n                  2016, Eindhoven, The Netherlands, April 2-8, 2016, Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {9636},\n  pages        = {752--769},\n  publisher    = {Springer},\n  year         = {2016},\n  url          = {https://doi.org/10.1007/978-3-662-49674-9\\_48},\n  doi          = {10.1007/978-3-662-49674-9\\_48},\n  timestamp    = {Tue, 14 May 2019 10:00:53 +0200},\n  biburl       = {https://dblp.org/rec/conf/tacas/RoohiP016.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Robustness in Cyber-Physical Systems (Dagstuhl Seminar 16362)",
-      author: 'Martin Fr{\\"{a}',
-      year: 2016,
-      bibtex:
-        '@article{DBLP:journals/dagstuhl-reports/FranzleKP16,\n  author       = {Martin Fr{\\"{a}}nzle and\n                  James Kapinski and\n                  Pavithra Prabhakar},\n  title        = {Robustness in Cyber-Physical Systems (Dagstuhl Seminar 16362)},\n  journal      = {Dagstuhl Reports},\n  volume       = {6},\n  number       = {9},\n  pages        = {29--45},\n  year         = {2016},\n  url          = {https://doi.org/10.4230/DagRep.6.9.29},\n  doi          = {10.4230/DAGREP.6.9.29},\n  timestamp    = {Wed, 07 Jun 2017 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/dagstuhl-reports/FranzleKP16.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}',
-    },
-    {
-      title: "Hybrid automata-based {CEGAR} for rectangular hybrid systems",
-      author:
-        "Pavithra Prabhakar, Parasara Sridhar Duggirala, Sayan Mitra, Mahesh Viswanathan",
-      year: 2015,
-      bibtex:
-        "@article{DBLP:journals/fmsd/PrabhakarDM015,\n  author       = {Pavithra Prabhakar and\n                  Parasara Sridhar Duggirala and\n                  Sayan Mitra and\n                  Mahesh Viswanathan},\n  title        = {Hybrid automata-based {CEGAR} for rectangular hybrid systems},\n  journal      = {Formal Methods Syst. Des.},\n  volume       = {46},\n  number       = {2},\n  pages        = {105--134},\n  year         = {2015},\n  url          = {https://doi.org/10.1007/s10703-015-0225-4},\n  doi          = {10.1007/S10703-015-0225-4},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/fmsd/PrabhakarDM015.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Stability Preserving Simulations and Bisimulations for Hybrid Systems",
-      author: "Pavithra Prabhakar, Geir E. Dullerud, Mahesh Viswanathan",
-      year: 2015,
-      bibtex:
-        "@article{DBLP:journals/tac/PrabhakarD015,\n  author       = {Pavithra Prabhakar and\n                  Geir E. Dullerud and\n                  Mahesh Viswanathan},\n  title        = {Stability Preserving Simulations and Bisimulations for Hybrid Systems},\n  journal      = {{IEEE} Trans. Autom. Control.},\n  volume       = {60},\n  number       = {12},\n  pages        = {3210--3225},\n  year         = {2015},\n  url          = {https://doi.org/10.1109/TAC.2015.2422431},\n  doi          = {10.1109/TAC.2015.2422431},\n  timestamp    = {Wed, 20 May 2020 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/tac/PrabhakarD015.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "A decidable class of planar linear hybrid systems",
-      author:
-        "Pavithra Prabhakar, Vladimeros Vladimerou, Mahesh Viswanathan, Geir E. Dullerud",
-      year: 2015,
-      bibtex:
-        "@article{DBLP:journals/tcs/PrabhakarVVD15,\n  author       = {Pavithra Prabhakar and\n                  Vladimeros Vladimerou and\n                  Mahesh Viswanathan and\n                  Geir E. Dullerud},\n  title        = {A decidable class of planar linear hybrid systems},\n  journal      = {Theor. Comput. Sci.},\n  volume       = {574},\n  pages        = {1--17},\n  year         = {2015},\n  url          = {https://doi.org/10.1016/j.tcs.2014.11.018},\n  doi          = {10.1016/J.TCS.2014.11.018},\n  timestamp    = {Wed, 17 Feb 2021 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/journals/tcs/PrabhakarVVD15.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "An Algorithmic Approach to Stability Verification of Hybrid Systems:\n                  {A} Summary",
-      author: "Pavithra Prabhakar, Miriam Garcia Soto",
-      year: 2015,
-      bibtex:
-        "@inproceedings{DBLP:conf/cav/PrabhakarS15,\n  author       = {Pavithra Prabhakar and\n                  Miriam Garcia Soto},\n  editor       = {Sergiy Bogomolov and\n                  Ashish Tiwari},\n  title        = {An Algorithmic Approach to Stability Verification of Hybrid Systems:\n                  {A} Summary},\n  booktitle    = {1st International Workshop on Symbolic and Numerical Methods for Reachability\n                  Analysis, SNR@CAV 2015, San Francisco, CA, USA, July 19, 2015},\n  series       = {EPiC Series in Computing},\n  volume       = {37},\n  pages        = {32--39},\n  publisher    = {EasyChair},\n  year         = {2015},\n  url          = {https://doi.org/10.29007/sj95},\n  doi          = {10.29007/SJ95},\n  timestamp    = {Sun, 15 Aug 2021 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/cav/PrabhakarS15.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Bounded error flowpipe computation of parameterized linear systems",
-      author: "Ratan Lal, Pavithra Prabhakar",
-      year: 2015,
-      bibtex:
-        "@inproceedings{DBLP:conf/emsoft/LalP15,\n  author       = {Ratan Lal and\n                  Pavithra Prabhakar},\n  editor       = {Alain Girault and\n                  Nan Guan},\n  title        = {Bounded error flowpipe computation of parameterized linear systems},\n  booktitle    = {2015 International Conference on Embedded Software, {EMSOFT} 2015,\n                  Amsterdam, Netherlands, October 4-9, 2015},\n  pages        = {237--246},\n  publisher    = {{IEEE}},\n  year         = {2015},\n  url          = {https://doi.org/10.1109/EMSOFT.2015.7318279},\n  doi          = {10.1109/EMSOFT.2015.7318279},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/emsoft/LalP15.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Deciding Concurrent Planar Monotonic Linear Hybrid Systems",
-      author: "Pavithra Prabhakar, Nima Roohi, Mahesh Viswanathan",
-      year: 2015,
-      bibtex:
-        "@inproceedings{DBLP:conf/formats/PrabhakarR015,\n  author       = {Pavithra Prabhakar and\n                  Nima Roohi and\n                  Mahesh Viswanathan},\n  editor       = {Sriram Sankaranarayanan and\n                  Enrico Vicario},\n  title        = {Deciding Concurrent Planar Monotonic Linear Hybrid Systems},\n  booktitle    = {Formal Modeling and Analysis of Timed Systems - 13th International\n                  Conference, {FORMATS} 2015, Madrid, Spain, September 2-4, 2015, Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {9268},\n  pages        = {256--269},\n  publisher    = {Springer},\n  year         = {2015},\n  url          = {https://doi.org/10.1007/978-3-319-22975-1\\_17},\n  doi          = {10.1007/978-3-319-22975-1\\_17},\n  timestamp    = {Fri, 06 Sep 2019 10:57:16 +0200},\n  biburl       = {https://dblp.org/rec/conf/formats/PrabhakarR015.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "From non-zenoness verification to termination",
-      author: "Pierre Ganty, Samir Genaim, Ratan Lal, Pavithra Prabhakar",
-      year: 2015,
-      bibtex:
-        "@inproceedings{DBLP:conf/memocode/GantyGLP15,\n  author       = {Pierre Ganty and\n                  Samir Genaim and\n                  Ratan Lal and\n                  Pavithra Prabhakar},\n  title        = {From non-zenoness verification to termination},\n  booktitle    = {13. {ACM/IEEE} International Conference on Formal Methods and Models\n                  for Codesign, {MEMOCODE} 2015, Austin, TX, USA, September 21-23, 2015},\n  pages        = {228--237},\n  publisher    = {{IEEE}},\n  year         = {2015},\n  url          = {https://doi.org/10.1109/MEMCOD.2015.7340490},\n  doi          = {10.1109/MEMCOD.2015.7340490},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/memocode/GantyGLP15.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Foundations of Quantitative Predicate Abstraction for Stability Analysis\n                  of Hybrid Systems",
-      author: "Pavithra Prabhakar, Miriam Garcia Soto",
-      year: 2015,
-      bibtex:
-        "@inproceedings{DBLP:conf/vmcai/PrabhakarS15,\n  author       = {Pavithra Prabhakar and\n                  Miriam Garcia Soto},\n  editor       = {Deepak D'Souza and\n                  Akash Lal and\n                  Kim Guldstrand Larsen},\n  title        = {Foundations of Quantitative Predicate Abstraction for Stability Analysis\n                  of Hybrid Systems},\n  booktitle    = {Verification, Model Checking, and Abstract Interpretation - 16th International\n                  Conference, {VMCAI} 2015, Mumbai, India, January 12-14, 2015. Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {8931},\n  pages        = {318--335},\n  publisher    = {Springer},\n  year         = {2015},\n  url          = {https://doi.org/10.1007/978-3-662-46081-8\\_18},\n  doi          = {10.1007/978-3-662-46081-8\\_18},\n  timestamp    = {Tue, 07 May 2024 20:11:13 +0200},\n  biburl       = {https://dblp.org/rec/conf/vmcai/PrabhakarS15.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "{AVERIST:} An Algorithmic Verifier for Stability",
-      author: "Pavithra Prabhakar, Miriam Garcia Soto",
-      year: 2015,
-      bibtex:
-        "@inproceedings{DBLP:journals/entcs/PrabhakarS15,\n  author       = {Pavithra Prabhakar and\n                  Miriam Garcia Soto},\n  editor       = {Sergiy Bogomolov and\n                  Matthieu Martel},\n  title        = {{AVERIST:} An Algorithmic Verifier for Stability},\n  booktitle    = {Seventh and Eighth International Workshops on Numerical Software Verification,\n                  {NSV} 2014, Vienna, Austria, July 17-18, 2014 {\\&} {NSV} 2015, Seattle,\n                  WA, USA, April 13, 2015},\n  series       = {Electronic Notes in Theoretical Computer Science},\n  volume       = {317},\n  pages        = {133--139},\n  publisher    = {Elsevier},\n  year         = {2015},\n  url          = {https://doi.org/10.1016/j.entcs.2015.10.013},\n  doi          = {10.1016/J.ENTCS.2015.10.013},\n  timestamp    = {Thu, 10 Nov 2022 15:22:15 +0100},\n  biburl       = {https://dblp.org/rec/journals/entcs/PrabhakarS15.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "An algorithmic approach to stability verification of polyhedral switched\n                  systems",
-      author: "Pavithra Prabhakar, Miriam Garcia Soto",
-      year: 2014,
-      bibtex:
-        "@inproceedings{DBLP:conf/amcc/PrabhakarS14,\n  author       = {Pavithra Prabhakar and\n                  Miriam Garcia Soto},\n  title        = {An algorithmic approach to stability verification of polyhedral switched\n                  systems},\n  booktitle    = {American Control Conference, {ACC} 2014, Portland, OR, USA, June 4-6,\n                  2014},\n  pages        = {2318--2323},\n  publisher    = {{IEEE}},\n  year         = {2014},\n  url          = {https://doi.org/10.1109/ACC.2014.6859056},\n  doi          = {10.1109/ACC.2014.6859056},\n  timestamp    = {Sun, 08 Aug 2021 01:40:57 +0200},\n  biburl       = {https://dblp.org/rec/conf/amcc/PrabhakarS14.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Decoupled Formal Synthesis for Almost Separable Systems with Temporal\n                  Logic Specifications",
-      author: "Scott C. Livingston, Pavithra Prabhakar",
-      year: 2014,
-      bibtex:
-        "@inproceedings{DBLP:conf/dars/LivingstonP14,\n  author       = {Scott C. Livingston and\n                  Pavithra Prabhakar},\n  editor       = {Nak Young Chong and\n                  Young{-}Jo Cho},\n  title        = {Decoupled Formal Synthesis for Almost Separable Systems with Temporal\n                  Logic Specifications},\n  booktitle    = {Distributed Autonomous Robotic Systems - The 12th International Symposium,\n                  {DARS} 2014, Daejeon, Korea, November 2-5, 2014},\n  series       = {Springer Tracts in Advanced Robotics},\n  volume       = {112},\n  pages        = {371--385},\n  publisher    = {Springer},\n  year         = {2014},\n  url          = {https://doi.org/10.1007/978-4-431-55879-8\\_26},\n  doi          = {10.1007/978-4-431-55879-8\\_26},\n  timestamp    = {Fri, 04 May 2018 01:16:52 +0200},\n  biburl       = {https://dblp.org/rec/conf/dars/LivingstonP14.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Switching control of dynamical systems from metric temporal logic\n                  specifications",
-      author: "Jun Liu, Pavithra Prabhakar",
-      year: 2014,
-      bibtex:
-        "@inproceedings{DBLP:conf/icra/LiuP14a,\n  author       = {Jun Liu and\n                  Pavithra Prabhakar},\n  title        = {Switching control of dynamical systems from metric temporal logic\n                  specifications},\n  booktitle    = {2014 {IEEE} International Conference on Robotics and Automation, {ICRA}\n                  2014, Hong Kong, China, May 31 - June 7, 2014},\n  pages        = {5333--5338},\n  publisher    = {{IEEE}},\n  year         = {2014},\n  url          = {https://doi.org/10.1109/ICRA.2014.6907643},\n  doi          = {10.1109/ICRA.2014.6907643},\n  timestamp    = {Wed, 16 Oct 2019 14:14:51 +0200},\n  biburl       = {https://dblp.org/rec/conf/icra/LiuP14a.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Verification of Cyber-Physical Systems (Dagstuhl Seminar 14122)",
-      author: "Rupak Majumdar, Richard M. Murray, Pavithra Prabhakar",
-      year: 2014,
-      bibtex:
-        "@article{DBLP:journals/dagstuhl-reports/MajumdarMP14,\n  author       = {Rupak Majumdar and\n                  Richard M. Murray and\n                  Pavithra Prabhakar},\n  title        = {Verification of Cyber-Physical Systems (Dagstuhl Seminar 14122)},\n  journal      = {Dagstuhl Reports},\n  volume       = {4},\n  number       = {3},\n  pages        = {85--102},\n  year         = {2014},\n  url          = {https://doi.org/10.4230/DagRep.4.3.85},\n  doi          = {10.4230/DAGREP.4.3.85},\n  timestamp    = {Wed, 07 Jun 2017 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/dagstuhl-reports/MajumdarMP14.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Computing augmented finite transition systems to synthesize switching\n                  protocols for polynomial switched systems",
-      author: "Necmiye Ozay, Jun Liu, Pavithra Prabhakar, Richard M. Murray",
-      year: 2013,
-      bibtex:
-        "@inproceedings{DBLP:conf/amcc/OzayLPM13,\n  author       = {Necmiye Ozay and\n                  Jun Liu and\n                  Pavithra Prabhakar and\n                  Richard M. Murray},\n  title        = {Computing augmented finite transition systems to synthesize switching\n                  protocols for polynomial switched systems},\n  booktitle    = {American Control Conference, {ACC} 2013, Washington, DC, USA, June\n                  17-19, 2013},\n  pages        = {6237--6244},\n  publisher    = {{IEEE}},\n  year         = {2013},\n  url          = {https://doi.org/10.1109/ACC.2013.6580816},\n  doi          = {10.1109/ACC.2013.6580816},\n  timestamp    = {Sun, 08 Aug 2021 01:40:56 +0200},\n  biburl       = {https://dblp.org/rec/conf/amcc/OzayLPM13.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Abstraction Based Model-Checking of Stability of Hybrid Systems",
-      author: "Pavithra Prabhakar, Miriam Garcia Soto",
-      year: 2013,
-      bibtex:
-        "@inproceedings{DBLP:conf/cav/PrabhakarS13,\n  author       = {Pavithra Prabhakar and\n                  Miriam Garcia Soto},\n  editor       = {Natasha Sharygina and\n                  Helmut Veith},\n  title        = {Abstraction Based Model-Checking of Stability of Hybrid Systems},\n  booktitle    = {Computer Aided Verification - 25th International Conference, {CAV}\n                  2013, Saint Petersburg, Russia, July 13-19, 2013. Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {8044},\n  pages        = {280--295},\n  publisher    = {Springer},\n  year         = {2013},\n  url          = {https://doi.org/10.1007/978-3-642-39799-8\\_20},\n  doi          = {10.1007/978-3-642-39799-8\\_20},\n  timestamp    = {Wed, 07 Dec 2022 23:12:58 +0100},\n  biburl       = {https://dblp.org/rec/conf/cav/PrabhakarS13.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Pre-orders for reasoning about stability properties with respect to\n                  input of hybrid systems",
-      author: "Pavithra Prabhakar, Jun Liu, Richard M. Murray",
-      year: 2013,
-      bibtex:
-        "@inproceedings{DBLP:conf/emsoft/PrabhakarLM13,\n  author       = {Pavithra Prabhakar and\n                  Jun Liu and\n                  Richard M. Murray},\n  editor       = {Rolf Ernst and\n                  Oleg Sokolsky},\n  title        = {Pre-orders for reasoning about stability properties with respect to\n                  input of hybrid systems},\n  booktitle    = {Proceedings of the International Conference on Embedded Software,\n                  {EMSOFT} 2013, Montreal, QC, Canada, September 29 - Oct. 4, 2013},\n  pages        = {24:1--24:10},\n  publisher    = {{IEEE}},\n  year         = {2013},\n  url          = {https://doi.org/10.1109/EMSOFT.2013.6658602},\n  doi          = {10.1109/EMSOFT.2013.6658602},\n  timestamp    = {Wed, 16 Oct 2019 14:14:56 +0200},\n  biburl       = {https://dblp.org/rec/conf/emsoft/PrabhakarLM13.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Verifying information flow properties of hybrid systems",
-      author: 'Pavithra Prabhakar, Boris K{\\"{o}',
-      year: 2013,
-      bibtex:
-        '@inproceedings{DBLP:conf/hicons/PrabhakarK13,\n  author       = {Pavithra Prabhakar and\n                  Boris K{\\"{o}}pf},\n  editor       = {Linda Bushnell and\n                  Larry Rohrbough and\n                  Saurabh Amin and\n                  Xenofon D. Koutsoukos},\n  title        = {Verifying information flow properties of hybrid systems},\n  booktitle    = {2nd {ACM} International Conference on High Confidence Networked Systems\n                  (part of {CPS} Week), HiCoNS 2013, Philadelphia, PA, USA, April 9-11,\n                  2013},\n  pages        = {77--84},\n  publisher    = {{ACM}},\n  year         = {2013},\n  url          = {https://doi.org/10.1145/2461446.2461458},\n  doi          = {10.1145/2461446.2461458},\n  timestamp    = {Tue, 06 Nov 2018 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/conf/hicons/PrabhakarK13.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}',
-    },
-    {
-      title: "On the decidability of stability of hybrid systems",
-      author: "Pavithra Prabhakar, Mahesh Viswanathan",
-      year: 2013,
-      bibtex:
-        "@inproceedings{DBLP:conf/hybrid/PrabhakarV13,\n  author       = {Pavithra Prabhakar and\n                  Mahesh Viswanathan},\n  editor       = {Calin Belta and\n                  Franjo Ivancic},\n  title        = {On the decidability of stability of hybrid systems},\n  booktitle    = {Proceedings of the 16th international conference on Hybrid systems:\n                  computation and control, {HSCC} 2013, April 8-11, 2013, Philadelphia,\n                  PA, {USA}},\n  pages        = {53--62},\n  publisher    = {{ACM}},\n  year         = {2013},\n  url          = {https://doi.org/10.1145/2461328.2461339},\n  doi          = {10.1145/2461328.2461339},\n  timestamp    = {Tue, 06 Nov 2018 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/conf/hybrid/PrabhakarV13.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Patching task-level robot controllers based on a local {\\(\\mu\\)}-calculus\n                  formula",
-      author:
-        "Scott C. Livingston, Pavithra Prabhakar, Alex B. Jose, Richard M. Murray",
-      year: 2013,
-      bibtex:
-        "@inproceedings{DBLP:conf/icra/LivingstonPJM13,\n  author       = {Scott C. Livingston and\n                  Pavithra Prabhakar and\n                  Alex B. Jose and\n                  Richard M. Murray},\n  title        = {Patching task-level robot controllers based on a local {\\(\\mu\\)}-calculus\n                  formula},\n  booktitle    = {2013 {IEEE} International Conference on Robotics and Automation, Karlsruhe,\n                  Germany, May 6-10, 2013},\n  pages        = {4588--4595},\n  publisher    = {{IEEE}},\n  year         = {2013},\n  url          = {https://doi.org/10.1109/ICRA.2013.6631229},\n  doi          = {10.1109/ICRA.2013.6631229},\n  timestamp    = {Wed, 16 Oct 2019 14:14:51 +0200},\n  biburl       = {https://dblp.org/rec/conf/icra/LivingstonPJM13.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Hybrid Automata-Based {CEGAR} for Rectangular Hybrid Systems",
-      author:
-        "Pavithra Prabhakar, Parasara Sridhar Duggirala, Sayan Mitra, Mahesh Viswanathan",
-      year: 2013,
-      bibtex:
-        "@inproceedings{DBLP:conf/vmcai/PrabhakarDMV13,\n  author       = {Pavithra Prabhakar and\n                  Parasara Sridhar Duggirala and\n                  Sayan Mitra and\n                  Mahesh Viswanathan},\n  editor       = {Roberto Giacobazzi and\n                  Josh Berdine and\n                  Isabella Mastroeni},\n  title        = {Hybrid Automata-Based {CEGAR} for Rectangular Hybrid Systems},\n  booktitle    = {Verification, Model Checking, and Abstract Interpretation, 14th International\n                  Conference, {VMCAI} 2013, Rome, Italy, January 20-22, 2013. Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {7737},\n  pages        = {48--67},\n  publisher    = {Springer},\n  year         = {2013},\n  url          = {https://doi.org/10.1007/978-3-642-35873-9\\_6},\n  doi          = {10.1007/978-3-642-35873-9\\_6},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/vmcai/PrabhakarDMV13.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Verification of Bounded Discrete Horizon Hybrid Automata",
-      author:
-        "Vladimeros Vladimerou, Pavithra Prabhakar, Mahesh Viswanathan, Geir E. Dullerud",
-      year: 2012,
-      bibtex:
-        "@article{DBLP:journals/tac/VladimerouPVD12,\n  author       = {Vladimeros Vladimerou and\n                  Pavithra Prabhakar and\n                  Mahesh Viswanathan and\n                  Geir E. Dullerud},\n  title        = {Verification of Bounded Discrete Horizon Hybrid Automata},\n  journal      = {{IEEE} Trans. Autom. Control.},\n  volume       = {57},\n  number       = {6},\n  pages        = {1445--1455},\n  year         = {2012},\n  url          = {https://doi.org/10.1109/TAC.2011.2178319},\n  doi          = {10.1109/TAC.2011.2178319},\n  timestamp    = {Wed, 20 May 2020 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/tac/VladimerouPVD12.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Foundations for approximation based analysis of stability properties\n                  of hybrid systems",
-      author: "Pavithra Prabhakar",
-      year: 2012,
-      bibtex:
-        "@inproceedings{DBLP:conf/allerton/Prabhakar12,\n  author       = {Pavithra Prabhakar},\n  title        = {Foundations for approximation based analysis of stability properties\n                  of hybrid systems},\n  booktitle    = {50th Annual Allerton Conference on Communication, Control, and Computing,\n                  Allerton 2012, Allerton Park {\\&} Retreat Center, Monticello, IL,\n                  USA, October 1-5, 2012},\n  pages        = {1602--1609},\n  publisher    = {{IEEE}},\n  year         = {2012},\n  url          = {https://doi.org/10.1109/Allerton.2012.6483412},\n  doi          = {10.1109/ALLERTON.2012.6483412},\n  timestamp    = {Wed, 16 Oct 2019 14:14:55 +0200},\n  biburl       = {https://dblp.org/rec/conf/allerton/Prabhakar12.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Conformance Testing of Boolean Programs with Multiple Faults",
-      author: "Pavithra Prabhakar, Mahesh Viswanathan",
-      year: 2012,
-      bibtex:
-        "@inproceedings{DBLP:conf/forte/PrabhakarV12,\n  author       = {Pavithra Prabhakar and\n                  Mahesh Viswanathan},\n  editor       = {Holger Giese and\n                  Grigore Rosu},\n  title        = {Conformance Testing of Boolean Programs with Multiple Faults},\n  booktitle    = {Formal Techniques for Distributed Systems - Joint 14th {IFIP} {WG}\n                  6.1 International Conference, {FMOODS} 2012 and 32nd {IFIP} {WG} 6.1\n                  International Conference, {FORTE} 2012, Stockholm, Sweden, June 13-16,\n                  2012. Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {7273},\n  pages        = {101--117},\n  publisher    = {Springer},\n  year         = {2012},\n  url          = {https://doi.org/10.1007/978-3-642-30793-5\\_7},\n  doi          = {10.1007/978-3-642-30793-5\\_7},\n  timestamp    = {Tue, 14 May 2019 10:00:50 +0200},\n  biburl       = {https://dblp.org/rec/conf/forte/PrabhakarV12.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Pre-orders for reasoning about stability",
-      author: "Pavithra Prabhakar, Geir E. Dullerud, Mahesh Viswanathan",
-      year: 2012,
-      bibtex:
-        "@inproceedings{DBLP:conf/hybrid/PrabhakarDV12,\n  author       = {Pavithra Prabhakar and\n                  Geir E. Dullerud and\n                  Mahesh Viswanathan},\n  editor       = {Thao Dang and\n                  Ian M. Mitchell},\n  title        = {Pre-orders for reasoning about stability},\n  booktitle    = {Hybrid Systems: Computation and Control (part of {CPS} Week 2012),\n                  HSCC'12, Beijing, China, April 17-19, 2012},\n  pages        = {197--206},\n  publisher    = {{ACM}},\n  year         = {2012},\n  url          = {https://doi.org/10.1145/2185632.2185662},\n  doi          = {10.1145/2185632.2185662},\n  timestamp    = {Tue, 03 Aug 2021 16:22:20 +0200},\n  biburl       = {https://dblp.org/rec/conf/hybrid/PrabhakarDV12.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Introduction to Hybrid Automata",
-      author: "Madhu Gopinathan, Pavithra Prabhakar",
-      year: 2012,
-      bibtex:
-        "@incollection{DBLP:books/ws/automata2012/GopinathanP12,\n  author       = {Madhu Gopinathan and\n                  Pavithra Prabhakar},\n  editor       = {Deepak D'Souza and\n                  Priti Shankar},\n  title        = {Introduction to Hybrid Automata},\n  booktitle    = {Modern Applications of Automata Theory},\n  series       = {IISc Research Monographs Series},\n  volume       = {2},\n  pages        = {415--436},\n  publisher    = {World Scientific},\n  year         = {2012},\n  url          = {https://doi.org/10.1142/9789814271059\\_0013},\n  doi          = {10.1142/9789814271059\\_0013},\n  timestamp    = {Sat, 03 Aug 2019 22:52:51 +0200},\n  biburl       = {https://dblp.org/rec/books/ws/automata2012/GopinathanP12.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Automata and Logics over Signals",
-      author:
-        "Fabrice Chevalier, Deepak D'Souza, Raj Mohan Matteplackel, Pavithra Prabhakar",
-      year: 2012,
-      bibtex:
-        "@incollection{DBLP:books/ws/automata2012/ChevalierDMP12,\n  author       = {Fabrice Chevalier and\n                  Deepak D'Souza and\n                  Raj Mohan Matteplackel and\n                  Pavithra Prabhakar},\n  editor       = {Deepak D'Souza and\n                  Priti Shankar},\n  title        = {Automata and Logics over Signals},\n  booktitle    = {Modern Applications of Automata Theory},\n  series       = {IISc Research Monographs Series},\n  volume       = {2},\n  pages        = {555--584},\n  publisher    = {World Scientific},\n  year         = {2012},\n  url          = {https://doi.org/10.1142/9789814271059\\_0018},\n  doi          = {10.1142/9789814271059\\_0018},\n  timestamp    = {Sat, 03 Aug 2019 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/books/ws/automata2012/ChevalierDMP12.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Approximation Based Safety and Stability Verification of Hybrid Systems",
-      author: "Pavithra Prabhakar",
-      year: 2011,
-      bibtex:
-        "@phdthesis{DBLP:phd/us/Prabhakar11,\n  author       = {Pavithra Prabhakar},\n  title        = {Approximation Based Safety and Stability Verification of Hybrid Systems},\n  school       = {University of Illinois Urbana-Champaign, {USA}},\n  year         = {2011},\n  url          = {https://hdl.handle.net/2142/26102},\n  timestamp    = {Fri, 13 Oct 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/phd/us/Prabhakar11.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Specifications for decidable hybrid games",
-      author:
-        "Vladimeros Vladimerou, Pavithra Prabhakar, Mahesh Viswanathan, Geir E. Dullerud",
-      year: 2011,
-      bibtex:
-        "@article{DBLP:journals/tcs/VladimerouPVD11,\n  author       = {Vladimeros Vladimerou and\n                  Pavithra Prabhakar and\n                  Mahesh Viswanathan and\n                  Geir E. Dullerud},\n  title        = {Specifications for decidable hybrid games},\n  journal      = {Theor. Comput. Sci.},\n  volume       = {412},\n  number       = {48},\n  pages        = {6770--6785},\n  year         = {2011},\n  url          = {https://doi.org/10.1016/j.tcs.2011.08.036},\n  doi          = {10.1016/J.TCS.2011.08.036},\n  timestamp    = {Wed, 17 Feb 2021 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/journals/tcs/VladimerouPVD11.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "A dynamic algorithm for approximate flow computations",
-      author: "Pavithra Prabhakar, Mahesh Viswanathan",
-      year: 2011,
-      bibtex:
-        "@inproceedings{DBLP:conf/hybrid/PrabhakarV11,\n  author       = {Pavithra Prabhakar and\n                  Mahesh Viswanathan},\n  editor       = {Marco Caccamo and\n                  Emilio Frazzoli and\n                  Radu Grosu},\n  title        = {A dynamic algorithm for approximate flow computations},\n  booktitle    = {Proceedings of the 14th {ACM} International Conference on Hybrid Systems:\n                  Computation and Control, {HSCC} 2011, Chicago, IL, USA, April 12-14,\n                  2011},\n  pages        = {133--142},\n  publisher    = {{ACM}},\n  year         = {2011},\n  url          = {https://doi.org/10.1145/1967701.1967722},\n  doi          = {10.1145/1967701.1967722},\n  timestamp    = {Tue, 06 Nov 2018 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/conf/hybrid/PrabhakarV11.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Behavior Based Service Composition",
-      author: "Fangzhe Chang, Pavithra Prabhakar, Ramesh Viswanathan",
-      year: 2011,
-      bibtex:
-        "@inproceedings{DBLP:conf/wsfm/ChangPV11,\n  author       = {Fangzhe Chang and\n                  Pavithra Prabhakar and\n                  Ramesh Viswanathan},\n  editor       = {Marco Carbone and\n                  Jean{-}Marc Petit},\n  title        = {Behavior Based Service Composition},\n  booktitle    = {Web Services and Formal Methods - 8th International Workshop, {WS-FM}\n                  2011, Clermont-Ferrand, France, September 1-2, 2011, Revised Selected\n                  Papers},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {7176},\n  pages        = {17--31},\n  publisher    = {Springer},\n  year         = {2011},\n  url          = {https://doi.org/10.1007/978-3-642-29834-9\\_3},\n  doi          = {10.1007/978-3-642-29834-9\\_3},\n  timestamp    = {Tue, 14 May 2019 10:00:41 +0200},\n  biburl       = {https://dblp.org/rec/conf/wsfm/ChangPV11.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Complexity Bounds for the Verification of Real-Time Software",
-      author:
-        "Rohit Chadha, Axel Legay, Pavithra Prabhakar, Mahesh Viswanathan",
-      year: 2010,
-      bibtex:
-        "@inproceedings{DBLP:conf/vmcai/ChadhaLPV10,\n  author       = {Rohit Chadha and\n                  Axel Legay and\n                  Pavithra Prabhakar and\n                  Mahesh Viswanathan},\n  editor       = {Gilles Barthe and\n                  Manuel V. Hermenegildo},\n  title        = {Complexity Bounds for the Verification of Real-Time Software},\n  booktitle    = {Verification, Model Checking, and Abstract Interpretation, 11th International\n                  Conference, {VMCAI} 2010, Madrid, Spain, January 17-19, 2010. Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {5944},\n  pages        = {95--111},\n  publisher    = {Springer},\n  year         = {2010},\n  url          = {https://doi.org/10.1007/978-3-642-11319-2\\_10},\n  doi          = {10.1007/978-3-642-11319-2\\_10},\n  timestamp    = {Sat, 19 Oct 2019 20:29:32 +0200},\n  biburl       = {https://dblp.org/rec/conf/vmcai/ChadhaLPV10.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Automata and logics over finitely varying functions",
-      author:
-        "Fabrice Chevalier, Deepak D'Souza, M. Raj Mohan, Pavithra Prabhakar",
-      year: 2009,
-      bibtex:
-        "@article{DBLP:journals/apal/ChevalierDMP09,\n  author       = {Fabrice Chevalier and\n                  Deepak D'Souza and\n                  M. Raj Mohan and\n                  Pavithra Prabhakar},\n  title        = {Automata and logics over finitely varying functions},\n  journal      = {Ann. Pure Appl. Log.},\n  volume       = {161},\n  number       = {3},\n  pages        = {324--336},\n  year         = {2009},\n  url          = {https://doi.org/10.1016/j.apal.2009.07.007},\n  doi          = {10.1016/J.APAL.2009.07.007},\n  timestamp    = {Fri, 21 Feb 2020 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/journals/apal/ChevalierDMP09.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "On Convergence of Concurrent Systems under Regular Interactions",
-      author: "Pavithra Prabhakar, Sayan Mitra, Mahesh Viswanathan",
-      year: 2009,
-      bibtex:
-        "@inproceedings{DBLP:conf/concur/PrabhakarMV09,\n  author       = {Pavithra Prabhakar and\n                  Sayan Mitra and\n                  Mahesh Viswanathan},\n  editor       = {Mario Bravetti and\n                  Gianluigi Zavattaro},\n  title        = {On Convergence of Concurrent Systems under Regular Interactions},\n  booktitle    = {{CONCUR} 2009 - Concurrency Theory, 20th International Conference,\n                  {CONCUR} 2009, Bologna, Italy, September 1-4, 2009. Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {5710},\n  pages        = {527--541},\n  publisher    = {Springer},\n  year         = {2009},\n  url          = {https://doi.org/10.1007/978-3-642-04081-8\\_35},\n  doi          = {10.1007/978-3-642-04081-8\\_35},\n  timestamp    = {Sat, 30 Sep 2023 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/conf/concur/PrabhakarMV09.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "{STORMED} Hybrid Games",
-      author:
-        "Vladimeros Vladimerou, Pavithra Prabhakar, Mahesh Viswanathan, Geir E. Dullerud",
-      year: 2009,
-      bibtex:
-        "@inproceedings{DBLP:conf/hybrid/VladimerouPVD09,\n  author       = {Vladimeros Vladimerou and\n                  Pavithra Prabhakar and\n                  Mahesh Viswanathan and\n                  Geir E. Dullerud},\n  editor       = {Rupak Majumdar and\n                  Paulo Tabuada},\n  title        = {{STORMED} Hybrid Games},\n  booktitle    = {Hybrid Systems: Computation and Control, 12th International Conference,\n                  {HSCC} 2009, San Francisco, CA, USA, April 13-15, 2009. Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {5469},\n  pages        = {480--484},\n  publisher    = {Springer},\n  year         = {2009},\n  url          = {https://doi.org/10.1007/978-3-642-00602-9\\_39},\n  doi          = {10.1007/978-3-642-00602-9\\_39},\n  timestamp    = {Tue, 14 May 2019 10:00:42 +0200},\n  biburl       = {https://dblp.org/rec/conf/hybrid/VladimerouPVD09.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Verifying Tolerant Systems Using Polynomial Approximations",
-      author:
-        "Pavithra Prabhakar, Vladimeros Vladimerou, Mahesh Viswanathan, Geir E. Dullerud",
-      year: 2009,
-      bibtex:
-        "@inproceedings{DBLP:conf/rtss/PrabhakarVVD09,\n  author       = {Pavithra Prabhakar and\n                  Vladimeros Vladimerou and\n                  Mahesh Viswanathan and\n                  Geir E. Dullerud},\n  editor       = {Theodore P. Baker},\n  title        = {Verifying Tolerant Systems Using Polynomial Approximations},\n  booktitle    = {Proceedings of the 30th {IEEE} Real-Time Systems Symposium, {RTSS}\n                  2009, Washington, DC, USA, 1-4 December 2009},\n  pages        = {181--190},\n  publisher    = {{IEEE} Computer Society},\n  year         = {2009},\n  url          = {https://doi.org/10.1109/RTSS.2009.28},\n  doi          = {10.1109/RTSS.2009.28},\n  timestamp    = {Fri, 24 Mar 2023 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/conf/rtss/PrabhakarVVD09.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "A Decidable Class of Planar Linear Hybrid Systems",
-      author:
-        "Pavithra Prabhakar, Vladimeros Vladimerou, Mahesh Viswanathan, Geir E. Dullerud",
-      year: 2008,
-      bibtex:
-        "@inproceedings{DBLP:conf/hybrid/PrabhakarVVD08,\n  author       = {Pavithra Prabhakar and\n                  Vladimeros Vladimerou and\n                  Mahesh Viswanathan and\n                  Geir E. Dullerud},\n  editor       = {Magnus Egerstedt and\n                  Bud Mishra},\n  title        = {A Decidable Class of Planar Linear Hybrid Systems},\n  booktitle    = {Hybrid Systems: Computation and Control, 11th International Workshop,\n                  {HSCC} 2008, St. Louis, MO, USA, April 22-24, 2008. Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {4981},\n  pages        = {401--414},\n  publisher    = {Springer},\n  year         = {2008},\n  url          = {https://doi.org/10.1007/978-3-540-78929-1\\_29},\n  doi          = {10.1007/978-3-540-78929-1\\_29},\n  timestamp    = {Tue, 14 May 2019 10:00:42 +0200},\n  biburl       = {https://dblp.org/rec/conf/hybrid/PrabhakarVVD08.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "{STORMED} Hybrid Systems",
-      author:
-        "Vladimeros Vladimerou, Pavithra Prabhakar, Mahesh Viswanathan, Geir E. Dullerud",
-      year: 2008,
-      bibtex:
-        "@inproceedings{DBLP:conf/icalp/VladimerouPVD08,\n  author       = {Vladimeros Vladimerou and\n                  Pavithra Prabhakar and\n                  Mahesh Viswanathan and\n                  Geir E. Dullerud},\n  editor       = {Luca Aceto and\n                  Ivan Damg{\\aa}rd and\n                  Leslie Ann Goldberg and\n                  Magn{\\'{u}}s M. Halld{\\'{o}}rsson and\n                  Anna Ing{\\'{o}}lfsd{\\'{o}}ttir and\n                  Igor Walukiewicz},\n  title        = {{STORMED} Hybrid Systems},\n  booktitle    = {Automata, Languages and Programming, 35th International Colloquium,\n                  {ICALP} 2008, Reykjavik, Iceland, July 7-11, 2008, Proceedings, Part\n                  {II} - Track {B:} Logic, Semantics, and Theory of Programming {\\&}\n                  Track {C:} Security and Cryptography Foundations},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {5126},\n  pages        = {136--147},\n  publisher    = {Springer},\n  year         = {2008},\n  url          = {https://doi.org/10.1007/978-3-540-70583-3\\_12},\n  doi          = {10.1007/978-3-540-70583-3\\_12},\n  timestamp    = {Fri, 27 Mar 2020 09:02:59 +0100},\n  biburl       = {https://dblp.org/rec/conf/icalp/VladimerouPVD08.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title:
-        "Formal modeling and analysis of real-time resource-sharing protocols\n                  in Real-Time Maude",
-      author: 'Peter Csaba {\\"{O}',
-      year: 2008,
-      bibtex:
-        '@inproceedings{DBLP:conf/ipps/OlveczkyPL08,\n  author       = {Peter Csaba {\\"{O}}lveczky and\n                  Pavithra Prabhakar and\n                  Xue Liu},\n  title        = {Formal modeling and analysis of real-time resource-sharing protocols\n                  in Real-Time Maude},\n  booktitle    = {22nd {IEEE} International Symposium on Parallel and Distributed Processing,\n                  {IPDPS} 2008, Miami, Florida USA, April 14-18, 2008},\n  pages        = {1--8},\n  publisher    = {{IEEE}},\n  year         = {2008},\n  url          = {https://doi.org/10.1109/IPDPS.2008.4536574},\n  doi          = {10.1109/IPDPS.2008.4536574},\n  timestamp    = {Fri, 24 Mar 2023 00:00:00 +0100},\n  biburl       = {https://dblp.org/rec/conf/ipps/OlveczkyPL08.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}',
-    },
-    {
-      title:
-        "On the expressiveness of {MTL} in the pointwise and continuous semantics",
-      author: "Deepak D'Souza, Pavithra Prabhakar",
-      year: 2007,
-      bibtex:
-        "@article{DBLP:journals/sttt/DSouzaP07,\n  author       = {Deepak D'Souza and\n                  Pavithra Prabhakar},\n  title        = {On the expressiveness of {MTL} in the pointwise and continuous semantics},\n  journal      = {Int. J. Softw. Tools Technol. Transf.},\n  volume       = {9},\n  number       = {1},\n  pages        = {1--4},\n  year         = {2007},\n  url          = {https://doi.org/10.1007/s10009-005-0214-9},\n  doi          = {10.1007/S10009-005-0214-9},\n  timestamp    = {Thu, 02 Apr 2020 01:00:00 +0200},\n  biburl       = {https://dblp.org/rec/journals/sttt/DSouzaP07.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "Counter-Free Input-Determined Timed Automata",
-      author: "Fabrice Chevalier, Deepak D'Souza, Pavithra Prabhakar",
-      year: 2007,
-      bibtex:
-        "@inproceedings{DBLP:conf/formats/ChevalierDP07,\n  author       = {Fabrice Chevalier and\n                  Deepak D'Souza and\n                  Pavithra Prabhakar},\n  editor       = {Jean{-}Fran{\\c{c}}ois Raskin and\n                  P. S. Thiagarajan},\n  title        = {Counter-Free Input-Determined Timed Automata},\n  booktitle    = {Formal Modeling and Analysis of Timed Systems, 5th International Conference,\n                  {FORMATS} 2007, Salzburg, Austria, October 3-5, 2007, Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {4763},\n  pages        = {82--97},\n  publisher    = {Springer},\n  year         = {2007},\n  url          = {https://doi.org/10.1007/978-3-540-75454-1\\_8},\n  doi          = {10.1007/978-3-540-75454-1\\_8},\n  timestamp    = {Tue, 14 May 2019 10:00:38 +0200},\n  biburl       = {https://dblp.org/rec/conf/formats/ChevalierDP07.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "On the Expressiveness of {MTL} with Past Operators",
-      author: "Pavithra Prabhakar, Deepak D'Souza",
-      year: 2006,
-      bibtex:
-        "@inproceedings{DBLP:conf/formats/PrabhakarD06,\n  author       = {Pavithra Prabhakar and\n                  Deepak D'Souza},\n  editor       = {Eugene Asarin and\n                  Patricia Bouyer},\n  title        = {On the Expressiveness of {MTL} with Past Operators},\n  booktitle    = {Formal Modeling and Analysis of Timed Systems, 4th International Conference,\n                  {FORMATS} 2006, Paris, France, September 25-27, 2006, Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {4202},\n  pages        = {322--336},\n  publisher    = {Springer},\n  year         = {2006},\n  url          = {https://doi.org/10.1007/11867340\\_23},\n  doi          = {10.1007/11867340\\_23},\n  timestamp    = {Tue, 14 May 2019 10:00:38 +0200},\n  biburl       = {https://dblp.org/rec/conf/formats/PrabhakarD06.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-    {
-      title: "On Continuous Timed Automata with Input-Determined Guards",
-      author: "Fabrice Chevalier, Deepak D'Souza, Pavithra Prabhakar",
-      year: 2006,
-      bibtex:
-        "@inproceedings{DBLP:conf/fsttcs/ChevalierDP06,\n  author       = {Fabrice Chevalier and\n                  Deepak D'Souza and\n                  Pavithra Prabhakar},\n  editor       = {S. Arun{-}Kumar and\n                  Naveen Garg},\n  title        = {On Continuous Timed Automata with Input-Determined Guards},\n  booktitle    = {{FSTTCS} 2006: Foundations of Software Technology and Theoretical\n                  Computer Science, 26th International Conference, Kolkata, India, December\n                  13-15, 2006, Proceedings},\n  series       = {Lecture Notes in Computer Science},\n  volume       = {4337},\n  pages        = {369--380},\n  publisher    = {Springer},\n  year         = {2006},\n  url          = {https://doi.org/10.1007/11944836\\_34},\n  doi          = {10.1007/11944836\\_34},\n  timestamp    = {Tue, 14 May 2019 10:00:51 +0200},\n  biburl       = {https://dblp.org/rec/conf/fsttcs/ChevalierDP06.bib},\n  bibsource    = {dblp computer science bibliography, https://dblp.org}\n}",
-    },
-  ];
+  // Get the encoded JSON string from a data attribute if you choose that method (see previous response)
+  // Or, define it directly as a string literal here:
 
-  function renderPublications(list) {
-    const pubList = document.getElementById("pubList");
-    pubList.innerHTML = "";
-    list.forEach((pub, idx) => {
-      const div = document.createElement("div");
-      div.className = "publication";
-      div.innerHTML = `
-        <div class="title">${pub.title}</div>
-        <div class="meta"><strong>Author(s):</strong> ${pub.author} | <strong>Year:</strong> ${pub.year}</div>
-        <div class="toggle" onclick="toggleBibtex(${idx})">[Show BibTeX]</div>
-        <div class="bibtex" id="bib-${idx}">${pub.bibtex}</div>
-      `;
-      pubList.appendChild(div);
-    });
+  const rawPublicationsString = `{{ publications | dump | safe }}`;
+
+  let publications = []; // Initialize as empty array to avoid 'undefined' errors
+
+  try {
+    // Decode the URL-encoded string and parse it into a JavaScript array
+    publications = JSON.parse(decodeURIComponent(rawPublicationsString));
+  } catch (e) {
+    console.error("Error parsing publications data:", e);
+    document.getElementById("pubList").innerHTML =
+      "<li>Error loading publications. Please check the data format.</li>";
   }
-
-  function toggleBibtex(index) {
-    const bib = document.getElementById(`bib-${index}`);
-    bib.style.display = bib.style.display === "block" ? "none" : "block";
-  }
-
-  function sortPublications(option) {
-    let sorted = [...publications];
-    if (option === "year-desc") sorted.sort((a, b) => b.year - a.year);
-    else if (option === "year-asc") sorted.sort((a, b) => a.year - b.year);
-    else if (option === "author")
-      sorted.sort((a, b) => a.author.localeCompare(b.author));
-    renderPublications(sorted);
-  }
-
-  function filterPublications(query) {
-    const filtered = publications.filter(
-      (pub) =>
-        pub.title.toLowerCase().includes(query.toLowerCase()) ||
-        pub.author.toLowerCase().includes(query.toLowerCase())
-    );
-    renderPublications(filtered);
-  }
-
-  document.getElementById("searchInput").addEventListener("input", (e) => {
-    filterPublications(e.target.value);
-  });
-
-  document.getElementById("sortSelect").addEventListener("change", (e) => {
-    sortPublications(e.target.value);
-  });
-
-  // Initial render
-  renderPublications(publications);
 </script>

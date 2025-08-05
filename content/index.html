@@ -1,6 +1,9 @@
 ---
 layout: layout/home.njk
 title: "Trustworthy AI and Autonomy Lab (TRAIT)"
+eleventyNavigation:
+  key: "Home"
+  order: 1
 metadata:
   description: "Welcome to the Trustworthy AI and Cyber-Physical Lab at Kansas State University. We focus on ensuring the safety, reliability, and ethical use of AI in robotics and autonomous systems."
   keywords: " Trustworthy AI, Autonomy Lab, TRAIT, Kansas State University, K-State, robotics, explainable AI, XAI, secure AI, reliable AI, ethical AI, AI safety, formal methods, CSP, Communicating Sequential Processes, AI verification, AI validation, autonomous systems, artificial intelligence research, AI ethics, AI security, AI dependability"
@@ -33,8 +36,55 @@ metadata:
     </div>
   </div>
 </section>
+<!-- ================================================== -->
+<!-- START: Homepage Latest News Component -->
+<!-- ================================================== -->
 
-<article id="main" class="container special">
+<section class="latest-news">
+  <h2>Latest News</h2>
+  <div class="news-card-grid">
+    {# The `limit(5)` filter is what gets only the 5 most recent posts #} {%-
+    for post in collections.news | reverse | head(5) %}
+    <article class="news-card">
+      {# Image Section - only shows if an image is defined in front matter #} {%
+      if post.data.image %}
+      <a
+        href="{{ post.url }}"
+        class="news-card-image-link"
+        aria-hidden="true"
+        tabindex="-1"
+      >
+        <img
+          src="{{ post.data.image }}"
+          alt="{{ post.data.imageAlt }}"
+          class="news-card-image"
+        />
+      </a>
+      {% endif %}
+
+      <div class="news-card-content">
+        <time class="news-card-date" datetime="{{ post.date | htmlDateString }}"
+          >{{ post.date | readableDate }}</time
+        >
+        <h3 class="news-card-title">
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+        </h3>
+        {# Excerpt Section #} {% if post.data.excerpt %}
+        <p class="news-card-excerpt">{{ post.data.excerpt }}</p>
+        {% endif %}
+      </div>
+    </article>
+    {%- endfor %}
+  </div>
+  <div class="news-homepage-archive-link">
+    <a href="/news/">View all news →</a>
+  </div>
+</section>
+
+<!-- ================================================== -->
+<!-- END: Homepage Latest News Component -->
+<!-- ================================================== -->
+<!-- <article id="main" class="container special">
   <header>
     <h2><a href="#">Latest News</a></h2>
   </header>
@@ -66,9 +116,10 @@ metadata:
       </div>
     </div>
 
-    <!-- Add more news items as needed -->
-  </div>
+   
+  </div> 
   <footer>
     <a href="#" class="button">Continue Reading</a>
   </footer>
 </article>
+-->

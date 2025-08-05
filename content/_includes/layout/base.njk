@@ -4,7 +4,8 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html lang="{{ metadata.language }}">
+
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -20,7 +21,7 @@
       name="keywords"
       content="{{ keywords or metadata.keywords }}"
     />
-
+    <!-- TODO: plugin-bundle -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
       rel="stylesheet"
@@ -47,15 +48,18 @@
             {% block extraHeader %} {# Additional head content can be added here #} {% endblock %}
           </header>
         </div>
-
+        {# TODO: change h2 of each page #}
         <!-- Nav -->
         <nav id="nav">
           <ul>
-            <li><a href="index">Home</a></li>
+            {%- for entry in collections.all | eleventyNavigation %}
+              <li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
+            {%- endfor %}
+            {# <li><a href="index">Home</a></li>
             <li><a href="team">Team</a></li>
             <li><a href="publications">Publications</a></li>
             <li><a href="projects">Projects</a></li>
-            <li><a href="news">News</a></li>
+            <li><a href="news">News</a></li> #}
           </ul>
         </nav>
       </div>
@@ -162,5 +166,6 @@
     <script src="/assets/js/breakpoints.min.js"></script>
     <script src="/assets/js/util.js"></script>
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/publications.js"></script>
   </body>
 </html>
