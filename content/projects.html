@@ -10,14 +10,124 @@ metadata:
 ---
 
 {% block head %}
-<style></style>
+<style>
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  /* NEW: Styling for the anchor tag wrapping the card */
+  .project-link {
+    text-decoration: none; /* Removes the default underline */
+    color: inherit; /* Makes text inside the link inherit color */
+    display: block; /* Ensures the link takes up the full grid space */
+  }
+
+  /* Individual Project Card Styling */
+  .project-card {
+    max-width: 400px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 100%; /* Makes cards in the same row equal height */
+  }
+
+  /* The hover effect is now on the link, which contains the card */
+  .project-link:hover .project-card {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .project-card img {
+    /* This forces a constant widescreen aspect ratio (16 wide by 9 tall) */
+    aspect-ratio: 2 / 3;
+    height: 200px;
+    object-fit: fill;
+    display: block;
+  }
+
+  .project-card-content {
+    padding: 1rem;
+  }
+
+  .project-card-content h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #003366;
+  }
+
+  .project-card-content p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+  }
+</style>
 {% endblock %}
 
 <article id="main" class="special">
   <header>
     <h2 class="second-title">Lab Projects</h2>
-    <p></p>
+    <p>Explore our portfolio of ongoing research projects.</p>
   </header>
 
   <section></section>
 </article>
+
+<div class="project-grid">
+  {% set projectslist = collections.projects %} {% include "projectslist.njk" %}
+  {% if projectslist | length == 0 %}
+  <p>No news project available at the moment.</p>
+  {% endif %}
+  <!-- <div class="project-card">
+      <img src="https://placehold.co/600x400/003366/FFFFFF?text=Project+1" alt="Image for Project Title 1">
+      <div class="project-card-content">
+          <h3>Project Title 1</h3>
+          <p>A brief and engaging description of the project goes here. Explain the core idea and its goals.</p>
+      </div>
+  </div>
+
+  <div class="project-card">
+      <img src="https://placehold.co/600x400/556B2F/FFFFFF?text=Project+2" alt="Image for Project Title 2">
+      <div class="project-card-content">
+          <h3>Project Title 2</h3>
+          <p>A brief and engaging description of the project goes here. Explain the core idea and its goals.</p>
+      </div>
+  </div>
+
+  <div class="project-card">
+      <img src="https://placehold.co/600x400/8B4513/FFFFFF?text=Project+3" alt="Image for Project Title 3">
+      <div class="project-card-content">
+          <h3>Project Title 3</h3>
+          <p>A brief and engaging description of the project goes here. Explain the core idea and its goals.</p>
+      </div>
+  </div>
+
+  <div class="project-card">
+      <img src="https://placehold.co/600x400/4682B4/FFFFFF?text=Project+4" alt="Image for Project Title 4">
+      <div class="project-card-content">
+          <h3>Project Title 4</h3>
+          <p>A brief and engaging description of the project goes here. Explain the core idea and its goals.</p>
+      </div>
+  </div>
+  
+  <div class="project-card">
+      <img src="https://placehold.co/600x400/708090/FFFFFF?text=Project+5" alt="Image for Project Title 5">
+      <div class="project-card-content">
+          <h3>Project Title 5</h3>
+          <p>A brief and engaging description of the project goes here. Explain the core idea and its goals.</p>
+      </div>
+  </div>
+
+  <div class="project-card">
+      <img src="https://placehold.co/600x400/B22222/FFFFFF?text=Project+6" alt="Image for Project Title 6">
+      <div class="project-card-content">
+          <h3>Project Title 6</h3>
+          <p>A brief and engaging description of the project goes here. Explain the core idea and its goals.</p>
+      </div>
+  </div> -->
+</div>

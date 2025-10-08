@@ -1,0 +1,154 @@
+.post-header {
+  margin-bottom: 2rem;
+}
+
+/* Styling for the main post title */
+.post-header h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+  color: #1a2b3c;
+}
+
+/* Main container for the metadata */
+.post-metadata {
+  display: flex;
+  flex-wrap: wrap; /* Allows tags to wrap onto the next line on small screens */
+  align-items: center;
+  gap: 0.5rem 1rem; /* Vertical and horizontal gap between items */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+  color: #5a6775; /* A soft, muted text color */
+}
+
+/* Styling for each list item */
+.post-metadata li {
+  display: flex; /* Aligns items within the li, like the comma after a tag */
+  align-items: center;
+}
+
+/* Styling for the date */
+.post-metadata time {
+  padding-right: 1rem;
+  border-right: 1px solid #dce1e6; /* Separator line after the date */
+}
+
+/* Styling for the tag links */
+.post-tag {
+  display: inline-block;
+  text-decoration: none;
+  color: #3b4c5e;
+  background-color: #eef2f7;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px; /* Pill shape */
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.post-tag:hover {
+  background-color: #dce6f2;
+  color: #1a2b3c;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .post-header h1 {
+    font-size: 2rem;
+  }
+}
+
+.post-navigation {
+  margin: 4rem auto; /* Spacing above and below the component */
+  max-width: 700px; /* Match your main content width */
+  padding: 0 1rem;
+}
+
+/* "Back to News" Link Styling */
+.back-to-news {
+  display: block;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 4rem;
+}
+
+.back-to-news a {
+  text-decoration: none;
+  color: #555;
+  background-color: #f0f0f0;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px; /* Pill shape */
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.back-to-news a:hover {
+  background-color: #e9e9e9;
+  color: #111;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Previous/Next Links Container */
+.links-nextprev {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 2rem 0 0 0;
+  margin: 0;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Individual link items (li) */
+.links-nextprev li {
+  flex-basis: 50%; /* Each link takes up half the space */
+  line-height: 1.5;
+}
+
+.links-nextprev li a {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0056b3;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.links-nextprev li a:hover {
+  color: #003d7e;
+  text-decoration: underline;
+}
+
+/* Label text ("Previous →") */
+.links-nextprev .label {
+  font-size: 0.9rem;
+  color: #6c757d; /* Muted gray */
+  margin-bottom: 0.25rem;
+}
+
+/* Align "Next" link text to the right */
+.links-nextprev-next {
+  text-align: right;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 600px) {
+  .links-nextprev {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .links-nextprev li {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .links-nextprev-next {
+    text-align: left; /* Stack them both on the left on mobile */
+  }
+}

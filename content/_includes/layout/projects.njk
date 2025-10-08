@@ -1,0 +1,29 @@
+---
+layout: layout/base.njk
+---
+{% block head%}
+    <link rel="stylesheet" href="/assets/css/projects.css" />
+{% endblock %}
+
+<header class="post-header">
+        {# The main title for the post #}
+    <h1>{{ title or "This is the Main Post Title" }}</h1>
+
+    {# The metadata (date and tags) #}
+    <ul class="post-metadata">
+        <li><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
+        
+        {# {%- for tag in tags %}
+            {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+            <li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}</li>
+        {%- endfor %} #}
+    </ul>
+</header>
+
+{{ content | safe }}
+
+<div class="back-to-news">
+    <!-- Make sure this path is correct for your site structure -->
+    <a href="/projects/">Back to Projects</a>
+</div>
+

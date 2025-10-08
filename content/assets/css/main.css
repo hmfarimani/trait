@@ -175,7 +175,7 @@ html {
 body {
   background: #f0f4f4;
   color: #5b5b5b;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   font-family: "Inter", "Source Sans Pro", sans-serif;
   font-weight: 300;
@@ -2760,7 +2760,7 @@ body.homepage.is-preload #header:after {
   input,
   textarea,
   select {
-    font-size: 14pt;
+    font-size: 18pt;
     line-height: 1.75em;
   }
 
@@ -2789,7 +2789,7 @@ body.homepage.is-preload #header:after {
   input,
   textarea,
   select {
-    font-size: 12pt;
+    font-size: 16pt;
     line-height: 1.5em;
   }
 
@@ -2837,7 +2837,7 @@ body.homepage.is-preload #header:after {
   input,
   textarea,
   select {
-    font-size: 13pt;
+    font-size: 14pt;
     line-height: 1.65em;
   }
 

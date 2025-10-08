@@ -11,10 +11,10 @@
     <div class="news-item-content">
       <time class="news-item-date postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL yyyy") }}</time>
       </time>
-      <h2 class="news-item-title postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+      <h3 class="news-item-title postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
         <a href="{{ post.url }}" class="postlist-link">
           {% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-      </h2>
+      </h3>
       <p class="news-item-excerpt">
         {{ post.data.excerpt }}
       </p>

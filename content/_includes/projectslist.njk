@@ -1,0 +1,16 @@
+
+{%- for post in projectslist | reverse %}
+<a href="{{post.url}}" class="project-link">
+  <div class="project-card">
+      {%- if post.data.image %}
+        <img src="{{ post.data.image }}" alt="{{ post.data.imageAlt }}">
+      {% else %}
+        <img src="https://placehold.co/400x200/000000/FFFFFF?text={{ post.data.title }}&fontsize=32" alt="Image for Project Title 2">
+      {%- endif %}
+      <div class="project-card-content">
+          <h3>{{post.data.title}}</h3>
+          <p>{{post.data.excerpt}}</p>
+      </div>
+  </div>
+</a>
+{%- endfor %}

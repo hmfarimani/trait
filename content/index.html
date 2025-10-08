@@ -34,6 +34,12 @@ metadata:
     <div class="sponsor-item">
       <img src="/images/logos/nasa-logo-web-rgb.webp" alt="NASA" />
     </div>
+    <div class="sponsor-item">
+      <img src="/images/logos/usda-logo.png" alt="USDA" />
+    </div>
+    <div class="sponsor-item">
+      <img src="/images/logos/onr-logo.png" alt="ONR" />
+    </div>
   </div>
 </section>
 <!-- ================================================== -->
@@ -44,7 +50,7 @@ metadata:
   <h2>Latest News</h2>
   <div class="news-card-grid">
     {# The `limit(5)` filter is what gets only the 5 most recent posts #} {%-
-    for post in collections.news | reverse | head(5) %}
+    for post in collections.news | reverse | head(6) %}
     <article class="news-card">
       {# Image Section - only shows if an image is defined in front matter #} {%
       if post.data.image %}

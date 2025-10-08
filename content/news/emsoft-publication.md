@@ -1,13 +1,16 @@
 ---
 layout: layout/news.njk
-title: EMSOFT
-description: emsoft.
-date: 2018-07-04
+title: New Paper Accepted to EMSOFT 2025
+description: Paper Accepted to EMSOFT 2025.
+date: 2025-09-01
 tags:
   - news
-excerpt: "This is a short summary of my first news post. Click to read more!"
+excerpt: "Lipsy Gupta and Prof. Pavithra Prabhakar’s paper has been accepted to EMSOFT 2025"
 ---
 
-## New publication in EMSOFT
+### New publication in EMSOFT
 
-Our new article
+<br/>
+
+Congratulations to Lipsy Gupta and Prof. Pavithra Prabhakar on their paper, “Star-Set Based Efficient Reachable Set Computation of Anytime Sensing-Based Neural Network-Controlled Dynamical Systems,” which has been accepted to the International Conference on Embedded Software (EMSOFT) 2025.
+<br/>

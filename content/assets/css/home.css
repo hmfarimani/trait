@@ -61,7 +61,7 @@
 #banner p {
   margin: auto;
   margin-top: 1.5em;
-  font-size: 0.95rem;
+  font-size: 1.5rem;
   line-height: 1.8;
   text-align: justify;
 }
@@ -92,7 +92,7 @@
   max-height: 160px;
   max-width: 160px;
   object-fit: contain;
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 
@@ -139,6 +139,8 @@
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
+  margin-bottom: 0 !important;
+  min-height: 350px; /* Ensures uniform height for cards */
 }
 
 .news-card:hover {
@@ -193,6 +195,7 @@
   color: #555;
   margin: 0;
   flex-grow: 1; /* Pushes the 'Read More' link (if any) to the bottom */
+  text-align: left;
 }
 
 .news-homepage-archive-link {
