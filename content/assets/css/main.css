@@ -1,12 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600");
 @import url("fontawesome-all.min.css");
-
+@import url("https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Science+Gothic:wght@100..900&display=swap");
 /*
 	Helios by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
-
 html,
 body,
 div,
@@ -139,6 +138,7 @@ table {
 
 body {
   -webkit-text-size-adjust: none;
+  overflow-x: hidden;
 }
 
 mark {
@@ -174,7 +174,7 @@ html {
 
 body {
   background: #f0f4f4;
-  color: #5b5b5b;
+  color: #3a3a3a;
   font-size: 18px;
   line-height: 1.6;
   font-family: "Inter", "Source Sans Pro", sans-serif;
@@ -273,13 +273,15 @@ a {
 }
 
 a:hover {
-  color: #ef8376;
+  color: #ba0c2f;
   border-bottom-color: transparent;
 }
 
 h2.second-title {
-  color: #ef8376;
   border-bottom-color: transparent;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3a3a3a;
 }
 
 sub {
@@ -386,6 +388,32 @@ hr:after {
 @media screen and (max-width: 736px) {
   .container {
     width: 100%;
+  }
+
+  .menu-btn {
+    display: block; /* Show hamburger on mobile */
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px; /* Height of your navbar */
+    left: -100%; /* Hide the menu off-screen to the left */
+    background: white;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+
+  /* Show menu when checkbox is clicked */
+  #click:checked ~ .nav-links {
+    left: 0;
+  }
+
+  .nav-links li {
+    margin: 20px 0;
   }
 }
 
@@ -2295,22 +2323,42 @@ header .icon.circled {
 /* Header */
 
 #header {
-  position: relative;
-  background-image: url("../../images/home_header.png");
+  /* position: relative;
+  background-image: url("../../images/temp_banner.avif");
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
   color: #fff;
   text-align: center;
   padding: 7.5em 0 2em 0;
-  cursor: default;
+  cursor: default; */
+  position: relative;
+  height: 400px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Keeps the blur inside the container */
+  color: #fff;
 }
 
 #header:before {
   content: "";
-  display: inline-block;
-  vertical-align: middle;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
+  background-image: url("../../images/temp_banner.png");
+  background-size: cover;
+  background-position: center;
+
+  /* The magic filters */
+  filter: blur(3px) brightness(75%);
+
+  /* Scale up slightly to hide the white edges caused by blur */
+  transform: scale(1.1);
+  z-index: -1;
 }
 
 #header .inner {
@@ -2319,6 +2367,7 @@ header .icon.circled {
   margin: 0;
   display: inline-block;
   vertical-align: middle;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Extra readability */
 }
 
 #header header {
@@ -2328,6 +2377,7 @@ header .icon.circled {
 #header header > p {
   font-size: 1.25em;
   margin: 0;
+  text-align: center;
 }
 
 #header h1 {
@@ -3276,4 +3326,87 @@ body.homepage.is-preload #header:after {
   .carousel article .image {
     margin-bottom: 2em;
   }
+}
+
+/* Navbar Container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 1rem 5%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adds depth */
+  position: sticky; /* Keeps it at the top without breaking layout */
+  top: 0;
+  z-index: 1000;
+  border-bottom: 8px #ba0c2f solid;
+}
+
+/* Logo Styling */
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.logo span {
+  color: #ba0c2f; /* Accent color */
+  font-family: "Science Gothic", sans-serif;
+}
+
+/* Menu Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-size: 25px;
+}
+
+/* Hover Effect */
+.nav-links a:hover {
+  color: #ba0c2f;
+}
+
+/* Page Content Padding */
+.main-content {
+  padding: 40px 5%;
+}
+
+/* Hide the checkbox */
+#click {
+  display: none;
+}
+
+.menu-btn {
+  display: none; /* Hidden on desktop */
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.unm-logo {
+  background: #fff;
+  color: #fff;
+  border-bottom: 3px solid #ba0c2f;
+  background-image: url("../../images/logos/unm-logo.png");
+  text-indent: -999px;
+  width: 235px;
+  background-repeat: no-repeat;
+  height: 70px;
+  background-position-x: 50%;
+  background-position-y: 50%;
+  z-index: 100;
+  padding: 0;
+  background-size: contain;
+  top: -1px;
 }

@@ -33,8 +33,21 @@
       ><link rel="stylesheet" href="/assets/css/noscript.css"
     /></noscript>
   </head>
-  <body class="{% if page.url == '/' %}homepage{% endif %} no-sidebar is-preload">
+  {# {% if page.url == '/' %}homepage{% endif %} no-sidebar is-preload #}
+  <body class="no-sidebar is-preload">
     <div id="page-wrapper">
+      <nav class="navbar">
+        <div class="logo"><span>TRAIT</span> Lab</div>
+        <input type="checkbox" id="click">
+          <label for="click" class="menu-btn">
+            <i class="fas fa-bars">≡</i> </label>
+          <ul class="nav-links">
+            {%- for entry in collections.all | eleventyNavigation %}
+              <li ><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
+            {%- endfor %}
+          </ul>
+          <a class="unm-logo" href="https://www.unm.edu"></a>
+        </nav>
       <!-- Header -->
       <div id="header">
         <!-- Inner -->
@@ -50,18 +63,7 @@
         </div>
         {# TODO: change h2 of each page #}
         <!-- Nav -->
-        <nav id="nav">
-          <ul>
-            {%- for entry in collections.all | eleventyNavigation %}
-              <li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
-            {%- endfor %}
-            {# <li><a href="index">Home</a></li>
-            <li><a href="team">Team</a></li>
-            <li><a href="publications">Publications</a></li>
-            <li><a href="projects">Projects</a></li>
-            <li><a href="news">News</a></li> #}
-          </ul>
-        </nav>
+        
       </div>
       {% block homeBanner %} {# Default content for pages that don't override
       this block directly #} {% endblock %}
