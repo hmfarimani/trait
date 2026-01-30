@@ -28,7 +28,9 @@ metadata:
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     overflow: hidden; /* Important for keeping child border-radius contained */
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    transition:
+      transform 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out;
   }
 
   .news-item:hover {
@@ -76,6 +78,10 @@ metadata:
     text-decoration: none;
     color: #ba0c2f; /* Dark, readable text */
     transition: color 0.2s ease;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.3;
   }
 
   .news-item-title a:hover {
